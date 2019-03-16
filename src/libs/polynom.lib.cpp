@@ -29,22 +29,16 @@ void mult_p(const double * P, const int P_deg, const double * Q, const int Q_deg
             R[i + j] += P[i] * Q[j];
 }
 
-void mult_number( double * P, const int P_deg, const double n )
+void mult_number(double *P, int P_deg, double *R, double n)
 {
     for (int i = 0; i <= P_deg; i++)
-        P[i] *= n;
+        R[i] = n * P[i];
 }
 
-void derivative_p( double * P, const int P_deg )
+void derivative_p(double *P, int P_deg, double *R, int R_deg)
 {
-    for (int i = 0; i <= P_deg; i++)
-        P[i] *= i;
-
-    // shift array
-    for (int i = 0; i <= P_deg; i++)
-        P[i] = P[i + 1];
-
-    P[P_deg] = 0;
+    for (int i = 0; i <= R_deg; i++)
+        R[i] = (i+1) * P[i+1];
 }
 
 void add_p(const double * P, const int P_deg, const double * Q, const int Q_deg, double * R )
@@ -61,143 +55,44 @@ void substr_p(const double * P, const int P_deg, const double * Q, const int Q_d
         R[i] = P[i] - Q[i];
 }
 
-void copy_p( double * to, const double * from )
-{
-    for(int i = 0; i < MAX_DEG; i++)
-        to[i] = from[i];
-}
-
 void zero_p(double * P)
 {
     for(int i = 0; i < MAX_DEG; i++)
         P[i] = 0;
 }
 
-int polynom_menu()
+// returns polynom degree
+int get_p( double * P )
 {
+    int deg;
 
-    int func, junk, n;
+    do {
+        cout << "\nInsert polynom degree\n\nFor example:\nIf P(x) = 1*x^5 + 6*x^3 - 2*x^2 + 5*x - 13\nthen degree = 5\n";
+        cin >> deg;
+    } while( deg <= 0 || deg >= MAX_DEG );
 
-    while (1) {
-        printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
-               "|                                                            |\n"
-               "|                      >> ProCalc <<                         |\n"
-               "|                                                            |\n"
-               "|  >> Choose a function:                                     |\n"
-               "|                                                            |\n"
-               "|       1) Keyboard-typed goods                              |\n"
-               "|       2) Pseudo-randomly generated goods                   |\n"
-               "|       3) Containment of a text file                        |\n"
-               "|                                                            |\n"
-               "|       >> Type \"back\" to go to the previous menu <<         |\n"
-               "|       >> Type \"quit\" to terminate this program <<          |\n"
-               "|                                                            |\n");
-        printf("| Answer: ");
-        func = getchar();
-        prt_ln();
-        if (isdigit(func) && func >= '1' && func <= '6') {
-            func -= '0';
-            if ((junk = getchar()) != '\n') {
-                while ((junk = getchar()) != '\n')
-                    ;
-                no_cmd();
-                continue;
-            }
-
-            switch (func) {
-                case 1:
-                    // n = n_menu();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                default:
-                    break;
-            }
-
-            if (!n) {
-                func = 'b';
-            }
-
-        } else if (func == 'q') {
-            if (quit_m()) {
-                return -1;
-            } else {
-                continue;
-            }
-        } else if (func == 'b') {
-            if (back_m()) {
-                return 0;
-            } else {
-                continue;
-            }
-        } else {
-            no_cmd();
-            while ((junk = getchar()) != '\n')
-                ;
-            continue;
-        }
-    }
+    cout << "Insert polynom coefficients\n\nFor example:\nIf P(x) = 1*x^5 + 6*x^3 - 2*x^2 + 5*x - 13\nthen coefficients is = -13 5 -2 6 0 1 \n";
+    for (int i = 0; i <= deg; i++)
+        cin >> P[i];
 }
 
-
-int main()
+void show_p( const double * P, const int deg )
 {
-    double P[MAX_DEG] = {0},
-            Q[MAX_DEG] = {0},
-            temp[MAX_DEG] = {0},
-            temp2[MAX_DEG] = {0},
-            R[MAX_DEG] = {0};
-    int P_deg, Q_deg, R_deg, temp_deg, temp2_deg;
-
-
-    do {
-        cout << "Insert P polynom degree\n\nFor example:\nIf P(x) = 1*x^5 + 6*x^3 - 2*x^2 + 5*x - 13\nthen degree = 5\n";
-        cin >> P_deg;
-    } while( P_deg <= 0 || P_deg >= MAX_DEG );
-
-    cout << "Insert P polynom coefficients\n\nFor example:\nIf P(x) = 1*x^5 + 6*x^3 - 2*x^2 + 5*x - 13\nthen coefficients is = -13 5 -2 6 0 1 \n";
-    for (int i = 0; i <= P_deg; i++)
-        cin >> P[i];
-
-    do {
-        cout << "Insert Q polynom degree\n";
-        cin >> Q_deg;
-    } while( Q_deg <= 0 || Q_deg >= MAX_DEG );
-
-
-    cout << "Insert P polynom coefficients\n";
-    for (int i = 0; i <= Q_deg; i++)
-        cin >> Q[i];
-
-    R_deg = (P_deg > Q_deg) ? P_deg : Q_deg;
-
-
-
     // вывести результат в виде многочлена
     cout << "\n=== RESULT: ===\n";
-    for(int i = R_deg; i >= 0; i-- ) {
+    for(int i = deg; i >= 0; i-- ) {
 
-        if ( R[i] < 0 )
-            cout << "- ";
-        else if ( R[i] > 0 && i != R_deg ) // для первого слагаемого "+" выводить как-то некрасиво
-            cout << "+ ";
-        else if ( i != R_deg ) // тут коэф. равен 0, нифига не выводим
+        if ( P[i] < 0 )
+            cout << "- " << -1.0 * P[i];
+        else if ( P[i] > 0 && i != deg ) // для первого слагаемого "+" выводить как-то некрасиво
+            cout << "+ " << P[i];
+        else if ( i == deg )
+            cout << P[i];
+        else if ( i != deg ) // тут коэф. равен 0, нифига не выводим
             continue;
 
         if (i != 0) // для свободного члена x^0 писать не надо
-            cout << R[i] << "x^" << i << " ";
-        else
-            cout << R[i];
+            cout << "x^" << i << " ";
     }
-
     cout << endl;
-
 }

@@ -20,12 +20,15 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 
 #define MAX_DEG 100
 
-void mult_p(const double * P, const int P_deg, const double * Q, const int Q_deg, double * R );
-void mult_number( double * P, const int P_deg, const double n );
-void derivative_p( double * P, const int P_deg );
-void add_p(const double * P, const int P_deg, const double * Q, const int Q_deg, double * R );
-void substr_p(const double * P, const int P_deg, const double * Q, const int Q_deg, double * R );
-void copy_p( double * to, const double * from );
+using namespace std;
+
+void mult_p(const double * P, int P_deg, const double * Q, int Q_deg, double * R );
+void mult_number(double * P, int P_deg, double * R, double n);
+void derivative_p(double * P, int P_deg, double * R, int R_deg);
+void add_p(const double * P, int P_deg, const double * Q, int Q_deg, double * R );
+void substr_p(const double * P, int P_deg, const double * Q, int Q_deg, double * R );
 void zero_p(double * P);
+int get_p( double * P );
+void show_p( const double * P, int deg );
 int polynom_menu();
 
