@@ -7,7 +7,7 @@ struct Number {
 	int znam;
 };
 int menu_calk_drob(void);
-void sravn(); //функция сравнения
+void sravn(Number n,Number m); //функция сравнения
 void read(Number *numb);//чтение
 int nod(struct Number, struct Number);//НОД
 int nok(int, int, int);//НОК
