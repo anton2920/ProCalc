@@ -20,7 +20,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #define _CRT_SECURE_NO_WARNINGS
 #include "../headers/TeoriaVer.h"
 #include "../headers/header.h"
-int main_menu(void) {
+int verdant_menu(void) {
 	struct diskraspr row[100];
 	/* Initializing variables */
 	int func, junk, n, nrow = 0;
