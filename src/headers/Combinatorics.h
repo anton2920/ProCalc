@@ -1,6 +1,6 @@
 /*
-ProCalc — powerful multifunctional calculator
-Copyright © 2019 Tushino Software LLC
+ProCalc ï¿½ powerful multifunctional calculator
+Copyright ï¿½ 2019 Tushino Software LLC
 
 This file is part of ProCalc.
 
@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
-# ifndef Combinatorics_h
+#ifndef Combinatorics_h
 #define Combinatorics_h
 
 #ifdef _WIN32
@@ -28,17 +28,11 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 #endif
 
 double Combinatorics_factorial(int limit, int min);
-
 void Combinatorics_menu();
-
 void Placements_with_repetitions();
-
 void Placements_without_repetitions();
-
 void Combinations_with_repetitions();
-
 void Combinations_without_repetitions();
-
 void Permutations();
 
 #endif
