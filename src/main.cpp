@@ -19,6 +19,10 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include "headers/header.h"
+#include "headers/fraction.h"
+#include "headers/Combinatorics.h"
+#include "headers/polynom.h"
+#include "headers/TeoriaVer.h"
 
 int main(int argc, const char *argv[]) {
 
@@ -176,7 +180,7 @@ int main_menu(void) {
                 case 3:
                     break;
                 case 4:
-
+                    polynom_menu();
                     break;
                 case 5:
                     break;
