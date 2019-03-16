@@ -181,7 +181,7 @@ int main_menu(void) {
                 case 2:
                     break;
                 case 3:
-                    // n = Combinatorics_menu();
+                    n = Combinatorics_menu();
                     break;
                 case 4:
                     n = polynom_menu();

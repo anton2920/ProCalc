@@ -20,6 +20,7 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 #ifndef Combinatorics_h
 #define Combinatorics_h
 
+/* Combinatorics.cpp */
 double Combinatorics_factorial(int limit, int min);
 int Combinatorics_menu(void);
 void Placements_with_repetitions();
@@ -28,5 +29,12 @@ void Combinations_with_repetitions();
 void Combinations_without_repetitions();
 void Permutations_with_repetitions();
 void Permutations_without_repetitions();
+
+/* Combinatorics_menu.cpp */
+int Combinatorics_menu(void);
+int placements_menu(void);
+int combinations_menu(void);
+int permutations_menu(void);
+
 #endif
 
