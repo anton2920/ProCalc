@@ -30,5 +30,6 @@ void no_cmd(void);
 int back_m(void);
 int quit_m(void);
 int main_menu(void);
+int menu_continue(void);
 
 #endif

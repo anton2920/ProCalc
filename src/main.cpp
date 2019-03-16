@@ -27,7 +27,9 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 int main(int argc, const char *argv[]) {
 
     /* Main part */
-    main_menu();
+    do {
+        main_menu();
+    } while (menu_continue());
 
     /* Returning value */
     return 0;
@@ -205,6 +207,44 @@ int main_menu(void) {
             while ((junk = getchar()) != '\n')
                 ;
             continue;
+        }
+    }
+}
+
+int menu_continue(void) {
+
+    /* Initializing variables */
+    int func, junk;
+
+    /* I/O flow */
+    while (1) {
+        printf("| Continue? [y/N]: ");
+        switch ((func = getchar())) {
+            case 'y': case 'Y':
+                if ((junk = getchar()) != '\n') {
+                    while ((junk = getchar()) != '\n')
+                        ;
+                    prt_ln();
+                    continue;
+                }
+                prt_ln();
+                return 1;
+            case 'n': case 'N': case '\n':
+                if (func == 'n' || func == 'N') {
+                    if ((junk = getchar()) != '\n') {
+                        while ((junk = getchar()) != '\n')
+                            ;
+                        prt_ln();
+                        continue;
+                    }
+                }
+                prt_ln();
+                return 0;
+            default:
+                while ((junk = getchar()) != '\n')
+                    ;
+                prt_ln();
+                continue;
         }
     }
 }
