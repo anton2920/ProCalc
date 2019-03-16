@@ -48,7 +48,6 @@ int key(diskraspr *row, int nrow)
     } while (nrow < 2 || nrow > 100);
     do {
         printf("| Set a row of X and probability P:                          |\n");
-        printf("| ATTENTION! Values P have to is entered through a . but not a , ATTENTION!\n");
         for (int i = 0; i < nrow; i++) 
 		{
             printf("| x[%d] = ", i + 1);
