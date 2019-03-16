@@ -20,6 +20,11 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 #define _CRT_SECURE_NO_WARNINGS
 #include "../headers/TeoriaVer.h"
 #include "../headers/header.h"
+struct diskraspr
+{
+	int x;
+	double p;
+};
 int main_menu(void) {
 
 	/* Initializing variables */
