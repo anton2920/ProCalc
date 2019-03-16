@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/src.dir/main.cpp.o CMakeFiles/src.dir/libs/polynom.lib.cpp.o CMakeFiles/src.dir/libs/polynom.main.cpp.o  -o src 
