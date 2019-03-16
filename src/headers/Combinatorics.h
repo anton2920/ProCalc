@@ -1,4 +1,4 @@
-/*
+﻿/*
 ProCalc � powerful multifunctional calculator
 Copyright � 2019 Tushino Software LLC
 
@@ -19,13 +19,6 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 #ifndef Combinatorics_h
 #define Combinatorics_h
-
-#ifdef _WIN32
-#define CLEAR ("cls")
-#endif
-#ifdef __unix__
-#define CLEAR ("clear")
-#endif
 
 double Combinatorics_factorial(int limit, int min);
 void Combinatorics_menu();

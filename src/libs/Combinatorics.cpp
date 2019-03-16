@@ -50,7 +50,6 @@ void Combinatorics_menu()
 {
 	int sign;
 	do {
-		system(CLEAR);
 		do {
 			printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
 				"|                                                            |\n"
@@ -88,8 +87,7 @@ void Placements_with_repetitions()
 {
 	int n, m;
 	double A_m_n = 1;
-	do {
-		system(CLEAR); 
+	do { 
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while ((n < 1) || (n>100));
@@ -99,12 +97,10 @@ void Placements_with_repetitions()
 		do{
 			printf("| Enter the number of elements in the subset. m = ");
 			scanf("%d", &m);
-			system(CLEAR);
 		} while ((m > 10) || (m < 1));
 		else {
 			printf("| Enter the number of elements in the subset. m = ");
 			scanf("%d", &m);
-			system(CLEAR);
 		}
 		if (m>10) { printf("| Too big number!\n| "); }
 	} while ((m < 1) || (m > n) || (m > 20));
@@ -132,14 +128,12 @@ void Placements_without_repetitions()
 	int n, m, i;
 	double numerator, denominator;
 	do {
-		system(CLEAR);
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while (n < 1);
 	do {
 		printf("| Enter the number of elements in the subset. m = ");
 		scanf("%d", &m);
-		system(CLEAR);
 	} while ((m < 1) || (m>n));
 
 	i = n - m + 1;
@@ -163,14 +157,12 @@ void Combinations_with_repetitions()
 	int n, m, i;
 	double numerator, denominator;
 	do {
-		system(CLEAR);
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while (n < 1);
 	do {		
 		printf("| Enter the number of elements in the subset. m = ");
 		scanf("%d", &m);
-		system(CLEAR);
 	} while ((m < 1) || (m>n));
 
 	i = n;
@@ -195,14 +187,12 @@ void Combinations_without_repetitions()
 	int n, m, i;
 	double numerator, denominator;
 	do {
-		system(CLEAR);
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while (n < 1);
 	do {
 		printf("| Enter the number of elements in the subset. m = ");
 		scanf("%d", &m);
-		system(CLEAR);
 	} while ((m < 1) || (m>n));
 
 	i = n - m + 1;
@@ -227,7 +217,6 @@ void Permutations()
 	int n;
 	double P_n;
 	do {
-		system(CLEAR);
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while (n < 0);
