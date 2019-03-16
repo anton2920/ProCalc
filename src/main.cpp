@@ -149,7 +149,9 @@ int main_menu(void) {
 "|       1) Matrix calculator                                 |\n"
 "|       2) Fractions calculator                              |\n"
 "|       3) Combinatorial stuff calculator                    |\n"
-"|       4) "
+"|       4) Polynomials calculator                            |\n"
+"|       5) Probability and statistics                        |\n"
+"|       6) Functions stuff                                   |\n"
 "|                                                            |\n"
 "|       >> Type \"quit\" to terminate this program <<          |\n"
 "|                                                            |\n");
@@ -190,12 +192,6 @@ int main_menu(void) {
         } else if (func == 'q') {
             if (quit_m()) {
                 return -1;
-            } else {
-                continue;
-            }
-        } else if (func == 'b') {
-            if (back_m()) {
-                return 0;
             } else {
                 continue;
             }
