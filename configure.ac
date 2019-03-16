@@ -21,7 +21,7 @@ AC_CONFIG_FILES([Makefile src/Makefile doc/Makefile man/Makefile examples/Makefi
 AC_LANG([C++])
 AC_PROG_CXX
 
-# Perhaps check for: (more) programs, libraries, header files, types,
+# Check for: (more) programs, libraries, header files, types,
 # structures, compiler characteristics, library functions, system services.
 LT_INIT
 AC_ENABLE_SHARED
