@@ -17,6 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
+
 #ifndef Combinatorics_h
 #define Combinatorics_h
 
