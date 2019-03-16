@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = $(ACLOCAL_FLAGS)
 
-bin_PROGRAMS = ../ProCalc
+bin_PROGRAMS = ProCalc
 
 ProCalc_SOURCES = main.cpp
 ProCalc_LDADD = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la
