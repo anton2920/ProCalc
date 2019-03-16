@@ -41,25 +41,30 @@ void probability(void)
 
 int key(diskraspr *row, int nrow)
 {
+    int sump = 0;
 	do {
         printf("| Enter number of elements of a row: ");
         scanf("%d", &nrow);
     } while (nrow < 2 || nrow > 100);
-	printf("| Set a row of X:                                            |\n");
-	for (int i = 0; i < nrow; i++)
-	{
-		printf("| x[%d] = ", i + 1);
-		scanf("%d", &row[i].x);
-		printf("| p[%d] = ", i+1);
-		scanf("%lf", &row[i].p);
-        prt_ln();
-	}
+    do {
+        printf("| Set a row of X:                                            |\n");
+        printf("| ATTENTION! Values p have to is entered through a . but not a , ATTENTION!\n");
+        for (int i = 0; i < nrow; i++) {
+            printf("| x[%d] = ", i + 1);
+            scanf("%d", &row[i].x);
+            printf("| p[%d] = ", i + 1);
+            scanf("%lf", &row[i].p);
+            sump += row[i].p;
+            prt_ln();
+        }
+    } while (sump != 1);
+
 	return nrow;
 }
 
 double MathWait(diskraspr *row, int nrow)
 {
-	double sum = 0, sump = 0;
+	double sum = 0;
 	int u = key(row, nrow);
 	for (int j = 0; j < u; j++)
 	{
@@ -80,11 +85,12 @@ double MathWait(diskraspr *row, int nrow)
 
 double Dispercia(diskraspr *row, int nrow)
 {
-	double sum1 = 0, sump = 0, sum2 = 0, sumd = 0;
+	double sum1 = 0,sum2 = 0, sumd = 0;
 	int u = key(row, nrow);
 	for (int j = 0; j < u; j++)
 	{
 		sum1 += row[j].x*row[j].p;
+
 		sump += row[j].p;
 	}
 	if (sump != 1)
@@ -97,6 +103,8 @@ double Dispercia(diskraspr *row, int nrow)
 		sum2 += row[i].x*row[i].x*row[i].p;
 	}
 	sumd = sum2 - sum1 * sum1;
+
 	printf("| Dispersion equals to %2.2lf\n", sumd);
-	return 0;
+
+    return 0;
 }
