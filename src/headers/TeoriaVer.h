@@ -30,8 +30,8 @@ struct diskraspr
 /* func.ter.ver.cpp */
 int key(diskraspr *, int);
 void probability(void);
-double MathWait(diskraspr *, int);
-double Dispercia(diskraspr *, int);
+void MathWait(diskraspr *, int);
+void Dispercia(diskraspr *, int);
 
 /* ter.ver.menu.cpp */
 int verdant_menu(void);
