@@ -1,17 +1,15 @@
 # ProCalc 
-## A free powerful professional multifunctional calculator. 
+## A free powerful professional multifunctional calculator
 
 ## Brief description
 ### Usage:
-```
- • Choose on of the sub-calculators to perform tasks:
- • • Matrix calculator
- • • Fractions calculator
- • • Combinatorial stuff calculator
- • • Polynomials calculator
- • • Probability and statistics
- • • Functions stuff
-```
+	• Choose on of the sub-calculators to perform tasks:
+ 	• • Matrix calculator
+ 	• • Fractions calculator
+ 	• • Combinatorial stuff calculator
+ 	• • Polynomials calculator
+ 	• • Probability and statistics
+ 	• • Functions stuff
 
 ### Notes:
 	• The program will go on forever 'till you press «No» in continue menu
