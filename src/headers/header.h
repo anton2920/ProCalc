@@ -30,6 +30,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #include "Combinatorics.h"
 #include "polynom.h"
 #include "TeoriaVer.h"
+#include "bigint.h"
 
 /* main.cpp */
 void prt_ln(void);

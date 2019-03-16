@@ -34,8 +34,9 @@ void probability(void)
 	while (deftry < 1);
 
 	ver = (deftry * 1.0 / alltry) * 100;
-	printf("| Probability of an outcome equals %.2lf%%\n", ver);
 
+    prt_ln();
+	printf("| Probability of an outcome equals %.2lf%%\n", ver);
     prt_ln();
 }
 
@@ -57,8 +58,11 @@ int key(diskraspr *row, int nrow)
             sump += row[i].p;
             prt_ln();
         }
-		if (sump != 1)
-		printf("| Sum of P must be equals to one                             |\n");
+		if (sump != 1) {
+            prt_ln();
+            printf("| Sum of P must be equals to one                             |\n");
+            prt_ln();
+        }
     } while (sump != 1);
 
 	return nrow;
@@ -73,6 +77,8 @@ void MathWait(diskraspr *row, int nrow)
 		sum += row[j].x*row[j].p;
 		
 	}
+
+    prt_ln();
 	printf("| Mathematical expectation equals to %2.2lf\n", sum);
     prt_ln();
 }
@@ -93,6 +99,7 @@ void Dispercia(diskraspr *row, int nrow)
 	}
 	sumd = sum2 - sum1 * sum1;
 
+    prt_ln();
 	printf("| Dispersion equals to %2.2lf\n", sumd);
     prt_ln();
 }

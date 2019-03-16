@@ -23,7 +23,6 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 
 /* Combinatorics.cpp */
 double Combinatorics_factorial(int limit, int min);
-int Combinatorics_menu(void);
 void Placements_with_repetitions();
 void Placements_without_repetitions();
 void Combinations_with_repetitions();

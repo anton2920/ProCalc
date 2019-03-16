@@ -1,7 +1,7 @@
 #include <string>
 #include <sstream>
 #include <map>
-#include "bigint.h"
+#include "../headers/header.h"
 
 namespace Dodecahedron
 {
