@@ -1,6 +1,26 @@
+/*
+ProCalc — powerful multifunctional calculator
+Copyright © 2019 Tushino Software LLC
+
+This file is part of ProCalc.
+
+ProCalc is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+ProCalc is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
+*/
+
 #include "headers/header.h"
 
-int main() {
+int main(int argc, const char *argv[]) {
 
     /* Main part */
     main_menu();
@@ -68,10 +88,55 @@ int quit_m(void) {
     }
 }
 
-int menu2(int *n) {
+int back_m(void) {
+    /* Initializing variables */
+    int junk;
+
+    /* Main part */
+    if ((junk = getchar()) == 'a') {
+        if ((junk = getchar()) == 'c') {
+            if ((junk = getchar()) == 'k') {
+                if ((junk = getchar()) == '\n') {
+                    return -1;
+                } else {
+                    no_cmd();
+                    while ((junk = getchar()) != '\n')
+                        ;
+                    return 0;
+                }
+            } else {
+                no_cmd();
+                if (junk == '\n') {
+                    return 0;
+                } else {
+                    while ((junk = getchar()) != '\n');
+                    return 0;
+                }
+            }
+        } else {
+            no_cmd();
+            if (junk == '\n') {
+                return 0;
+            } else {
+                while ((junk = getchar()) != '\n');
+                return 0;
+            }
+        }
+    } else {
+        no_cmd();
+        if (junk == '\n') {
+            return 0;
+        } else {
+            while ((junk = getchar()) != '\n');
+            return 0;
+        }
+    }
+}
+
+int main_menu(void) {
 
     /* Initializing variables */
-    int func, junk;
+    int func, junk, n;
 
     /* I/O flow */
     while (1) {
@@ -79,18 +144,19 @@ int menu2(int *n) {
 "|                                                            |\n"
 "|                      >> ProCalc <<                         |\n"
 "|                                                            |\n"
-"|  >> Chose the type of a calculator:                        |\n"
+"|  >> Choose a type of a calculator:                         |\n"
 "|                                                            |\n"
-"|       1) Keyboard-typed goods                              |\n"
-"|       2) Pseudo-randomly generated goods                   |\n"
-"|       3) Containment of a text file                        |\n"
+"|       1) Matrix calculator                                 |\n"
+"|       2) Fractions calculator                              |\n"
+"|       3) Combinatorial stuff calculator                    |\n"
+"|       4) "
 "|                                                            |\n"
 "|       >> Type \"quit\" to terminate this program <<          |\n"
 "|                                                            |\n");
         printf("| Answer: ");
         func = getchar();
         prt_ln();
-        if (isdigit(func) && func >= '1' && func <= '3') {
+        if (isdigit(func) && func >= '1' && func <= '6') {
             func -= '0';
             if ((junk = getchar()) != '\n') {
                 while ((junk = getchar()) != '\n')
@@ -98,11 +164,38 @@ int menu2(int *n) {
                 no_cmd();
                 continue;
             }
-            menu2_5(n);
-            return func;
+
+            switch (func) {
+                case 1:
+                    // n = n_menu();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                default:
+                    break;
+            }
+
+            if (!n) {
+                func = 'b';
+            }
+
         } else if (func == 'q') {
             if (quit_m()) {
                 return -1;
+            } else {
+                continue;
+            }
+        } else if (func == 'b') {
+            if (back_m()) {
+                return 0;
             } else {
                 continue;
             }
@@ -113,5 +206,4 @@ int menu2(int *n) {
             continue;
         }
     }
-
 }
