@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 #define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
+#include "../headers/header.h"
 struct diskraspr
 {
 	int x;
@@ -28,26 +28,26 @@ double probability()
 {
 	int alltry, deftry;
 	double ver;
-	printf("enter number of all try ");
+	printf("| Enter number of all try ");
 	do
 		scanf("%d", &alltry);
 	while (alltry < 1);
-	printf("enter number of the outcames interesting you ");
+	printf("| Enter number of the outcames interesting you ");
 	do
 		scanf("%d", &deftry);
 	while (deftry < 1);
 	ver = (deftry * 1.0 / alltry) * 100;
-	printf("Probability of an outcome is equal %3.2lf %%\n", ver);
+	printf("| Probability of an outcome is equal %3.2lf %%\n", ver);
 	return ver;
 }
 int key(diskraspr*row, int nrow)
 {
 
-	printf("enter number of elements of a row \n");
+	printf("| Enter number of elements of a row \n");
 	do
 		scanf("%d", &nrow);
 	while (nrow < 2 || nrow>100);
-	printf("Set a row of X\n");
+	printf("| Set a row of X\n");
 	for (int i = 0; i < nrow; i++)
 	{
 		printf("x%d=", i+1);
@@ -68,12 +68,12 @@ double MathWait(diskraspr*row, int nrow)
 	}
 	if (sump != 1)
 	{
-		printf("Sum of p must be equal 1");
+		printf("| Sum of p must be equal 1");
 		return 1;
 	}
 	else
 	{
-		printf("Mathmetical expectation is equal %3.3lf\n", sum);
+		printf("| Mathmetical expectation is equal %3.3lf\n", sum);
 		return 0;
 	}
 }
@@ -88,7 +88,7 @@ double Dispercia(diskraspr*row, int nrow)
 	}
 	if (sump != 1)
 	{
-		printf("Sum of p must be equal 1");
+		printf("| Sum of p must be equal 1");
 		return 1;
 	}
 	for (int i = 0; i < u; i++)
@@ -96,7 +96,7 @@ double Dispercia(diskraspr*row, int nrow)
 		sum2 += row[i].x*row[i].x*row[i].p;
 	}
 	sumd = sum2 - sum1 * sum1;
-	printf("Dispersion is equal %2.2lf\n ", sumd);
+	printf("| Dispersion is equal %2.2lf\n ", sumd);
 	return 0;
 
 }
