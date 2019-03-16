@@ -35,7 +35,7 @@ int polynom_menu()
     while (1) {
         printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
                "|                                                            |\n"
-               "|                      >> ProCalc <<                         |\n"
+               "|                >> Polynomials calculator <<                |\n"
                "|                                                            |\n"
                "|  >> Choose a function:                                     |\n"
                "|                                                            |\n"
