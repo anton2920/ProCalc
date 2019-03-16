@@ -1,2 +1,4 @@
+# Bogdan`s environment files
 ./cmake-build-debug
 ./CMakeLists.txt
+./.idea
