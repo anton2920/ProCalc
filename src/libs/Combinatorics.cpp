@@ -1,6 +1,6 @@
 /*
-ProCalc — powerful multifunctional calculator
-Copyright © 2019 Tushino Software LLC
+ProCalc ï¿½ powerful multifunctional calculator
+Copyright ï¿½ 2019 Tushino Software LLC
 
 This file is part of ProCalc.
 
@@ -15,7 +15,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
+along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include "../headers/Combinatorics.h"
@@ -53,7 +53,7 @@ void Combinatorics_menu()
 	do {
 		system(CLEAR);
 		do {
-			printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
+			printf(" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n"
 				"|                                                            |\n"
 				"|                      >> ProCalc <<                         |\n"
 				"|                                                            |\n"
@@ -123,7 +123,7 @@ void Placements_with_repetitions()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf(" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
 		printf("| The number of permutations with repetitions of %d on %d is %.0lf \n", n, m, A_m_n);
 	}
 }
@@ -154,7 +154,7 @@ void Placements_without_repetitions()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf(" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
 		printf("| The number of permutations without repetitions of %d on %d is %.0lf \n", n, m, numerator);
 	}
 }
@@ -186,7 +186,7 @@ void Combinations_with_repetitions()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf(" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
 		printf("| The number of combinations with repetitions of %d on %d is %.0lf \n", n, m, numerator / denominator);
 	}
 }
@@ -218,7 +218,7 @@ void Combinations_without_repetitions()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf(" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
 		printf("| The number of combinations without repetitions of %d on %d is %.0lf \n", n, m, numerator / denominator);
 	}
 }
@@ -241,7 +241,7 @@ void Permutations()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf(" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
 		printf("| The number of permutations of %d is %.0lf \n", n, P_n);
 	}
 }
