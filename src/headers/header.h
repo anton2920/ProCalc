@@ -22,6 +22,7 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 #define MAIN_HEADER_FILE
 
 #include <iostream>
+#include <cmath>
 
 /* main.cpp */
 void prt_ln(void);
