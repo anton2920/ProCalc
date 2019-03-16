@@ -27,6 +27,7 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 /* main.cpp */
 void prt_ln(void);
 void no_cmd(void);
+int back_m(void);
 int quit_m(void);
 int main_menu(void);
 
