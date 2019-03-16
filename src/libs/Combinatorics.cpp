@@ -1,6 +1,6 @@
-﻿/*
-ProCalc � powerful multifunctional calculator
-Copyright � 2019 Tushino Software LLC
+/*
+ProCalc � powerful multifunctional calculator
+Copyright � 2019 Tushino Software LLC
 
 This file is part of ProCalc.
 
@@ -11,14 +11,13 @@ the Free Software Foundation, either version 2 of the License, or
 
 ProCalc is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
+along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
-
-#include "../headers/header.h"
+# include "../ headers / header.h"
 
 int Combinatorics_choice()
 {
@@ -45,44 +44,85 @@ double Combinatorics_factorial(int limit, int min)
 	return factorial;
 }
 
+int Combinatorics_menu() {
 
-void Combinatorics_menu()
-{
-	int sign;
-	do {
-		do {
-			printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
-				"|                                                            |\n"
-				"|                      >> ProCalc <<                         |\n"
-				"|                                                            |\n"
-				"|  >> Choose action:                                         |\n"
-				"|                                                            |\n"
-				"|       1) Placements with repetitions                       |\n"
-				"|       2) Placements without repetitions                    |\n"
-				"|       3) Combinations with repetitions                     |\n"
-				"|       4) Combinations without repetitions                  |\n"
-				"|       5) Permutations                                      |\n"
-				"|       6) Backward                                          |\n"
-				"|                                                            |\n");
+	/* Initializing variables */
+	int func, junk, n = 0;
 
-			printf("| Answer: ");
-			scanf("%d", &sign);
-		} while ((sign > 6) || (sign < 1));
+	/* I/O flow */
+	while (1) {
+		printf(" ������������������������������������������������������������\n"
+			"|                                                            |\n"
+			"|                     >> ProCalc v1.0 <<                     |\n"
+			"|                                                            |\n"
+			"|  >> Choose a type of a calculator:                         |\n"
+			"|                                                            |\n"
+			"|       1) Placements with repetitions | \n"
+			"|       2) Placements without repetitions                    |\n"
+			"|       3) Combinations with repetitions                     |\n"
+			"|       4) Combinations without repetitions                  |\n"
+			"|       5) Permutations                                      |\n"
+			"|                                                            |\n"
+			"|       >> Type \"quit\" to terminate this program <<          |\n"
+			"|                                                            |\n");
+		printf("| Answer: ");
+		func = getchar();
+		prt_ln();
+		if (isdigit(func) && func >= '1' && func <= '5') {
+			func -= '0';
+			if ((junk = getchar()) != '\n') {
+				while ((junk = getchar()) != '\n')
+					;
+				no_cmd();
+				continue;
+			}
 
-		switch (sign)
-		{
-		case 1: Placements_with_repetitions(); break;
-		case 2: Placements_without_repetitions(); break;
-		case 3: Combinations_with_repetitions(); break;
-		case 4: Combinations_without_repetitions(); break;
-		case 5: Permutations(); break;
-		case 6: main_menu(); break;
+			switch (func) {
+			case 1:
+				Placements_with_repetitions();
+				break;
+			case 2:
+				Placements_without_repetitions();
+				break;
+			case 3:
+				Combinations_with_repetitions();
+				break;
+			case 4:
+				Combinations_without_repetitions();
+				break;
+			case 5:
+				Permutations();
+				break;
+			}
+
+			if (!n) {
+				continue;
+			}
+			else if (n == -1) {
+				return -1;
+			}
+			else {
+				return 0;
+			}
+
 		}
-
-		if (sign != 6) { sign = Combinatorics_choice(); }
-		
-	} while (sign != 6);
+		else if (func == 'q') {
+			if (quit_m()) {
+				return -1;
+			}
+			else {
+				continue;
+			}
+		}
+		else {
+			no_cmd();
+			while ((junk = getchar()) != '\n')
+				;
+			continue;
+		}
+	}
 }
+
 void Placements_with_repetitions()
 {
 	int n, m;
@@ -118,7 +158,7 @@ void Placements_with_repetitions()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		prt_ln();
 		printf("| The number of permutations with repetitions of %d on %d is %.0lf \n", n, m, A_m_n);
 	}
 }
@@ -147,7 +187,7 @@ void Placements_without_repetitions()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		prt_ln();
 		printf("| The number of permutations without repetitions of %d on %d is %.0lf \n", n, m, numerator);
 	}
 }
@@ -177,7 +217,7 @@ void Combinations_with_repetitions()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		prt_ln();
 		printf("| The number of combinations with repetitions of %d on %d is %.0lf \n", n, m, numerator / denominator);
 	}
 }
@@ -207,7 +247,7 @@ void Combinations_without_repetitions()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		prt_ln();
 		printf("| The number of combinations without repetitions of %d on %d is %.0lf \n", n, m, numerator / denominator);
 	}
 }
@@ -229,7 +269,7 @@ void Permutations()
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		prt_ln();
 		printf("| The number of permutations of %d is %.0lf \n", n, P_n);
 	}
 }
