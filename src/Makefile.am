@@ -7,13 +7,15 @@ ProCalc_SOURCES = main.cpp
 ProCalc_LDADD = libHelloWorld.la
 ProCalc_LDFLAGS = -lm -lSDL2
 
-lib_LTLIBRARIES = libpolynom.la
-libHelloWorld_la_LDFLAGS = -version-info 0:0:0
-libHelloWorld_la_SOURCES = libs/polynom.lib.cpp libs/polynom.main.cpp headers/polynom.h
+include_HEADERS = headers/*
 
-lib_LTLIBRARIES = libbigint.la
-libHelloWorld_la_LDFLAGS = -version-info 0:0:0
-libHelloWorld_la_SOURCES = libs/polynom.lib.cpp libs/polynom.main.cpp headers/polynom.h
+lib_LTLIBRARIES = libpolynom.la
+libpolynom_la_LDFLAGS = -version-info 0:0:0
+libpolynom_la_SOURCES = libs/polynom.lib.cpp libs/polynom.main.cpp
+
+lib_LTLIBRARIES = combinatorics.la
+libcombinatorics_la_LDFLAGS = -version-info 0:0:0
+libcombinatorics_la_SOURCES = libs/Combinatorics.cpp
 
 lib_LTLIBRARIES = libpolynom.la
 libHelloWorld_la_LDFLAGS = -version-info 0:0:0
