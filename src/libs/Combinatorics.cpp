@@ -17,12 +17,29 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
+
 #include "Combinatorics.h"
 #include "header.h"
-int Combinatorics_factorial(int limit)
+
+int Combinatorics_choice()
 {
-	int factorial = 1;
-	for (int i = 1;i <= limit;i++)
+	int sign;
+	
+	printf("\n");
+	printf("| One more time - 1 \n");
+	printf("| Backward - 0 \n");
+	do {
+		printf("| Answer: ");
+		scanf("%d", &sign);
+	} while ((sign > 1) || (sign < 0));
+	return sign;
+}
+
+double Combinatorics_factorial(int limit, int min)
+{
+	double factorial = 1;
+	
+	for (int i = min;i <= limit;i++)
 	{
 		factorial *= i;
 	}
@@ -34,26 +51,26 @@ void Combinatorics_menu()
 {
 	int sign;
 	do {
-		system("cls");
+		system(CLEAR);
 		do {
 			printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
-			"|                                                            |\n"
-			"|                      >> ProCalc <<                         |\n"
-			"|                                                            |\n"
-			"|  >> Choose action:                                         |\n"
-			"|                                                            |\n"
-			"|       1) Placements with repetitions                       |\n"
-			"|       2) Placements without repetitions                    |\n"
-			"|       3) Combinations with repetitions                     |\n"
-			"|       4) Combinations without repetitions                  |\n"
-			"|       5) Permutations                                      |\n"
-			"|       6) Backward                                          |\n"
-			"|                                                            |\n");
-			
+				"|                                                            |\n"
+				"|                      >> ProCalc <<                         |\n"
+				"|                                                            |\n"
+				"|  >> Choose action:                                         |\n"
+				"|                                                            |\n"
+				"|       1) Placements with repetitions                       |\n"
+				"|       2) Placements without repetitions                    |\n"
+				"|       3) Combinations with repetitions                     |\n"
+				"|       4) Combinations without repetitions                  |\n"
+				"|       5) Permutations                                      |\n"
+				"|       6) Backward                                          |\n"
+				"|                                                            |\n");
+
 			printf("| Answer: ");
 			scanf("%d", &sign);
 		} while ((sign > 6) || (sign < 1));
-		
+
 		switch (sign)
 		{
 		case 1: Placements_with_repetitions(); break;
@@ -61,113 +78,170 @@ void Combinatorics_menu()
 		case 3: Combinations_with_repetitions(); break;
 		case 4: Combinations_without_repetitions(); break;
 		case 5: Permutations(); break;
-		case 6: main_menu();break;
+		case 6: main_menu(); break;
 		}
 
-		printf("\n");
-		printf("| One more time - 1 \n");
-		printf("| Backward - 0 \n");
-		do {
-			printf("| Answer: ");
-			scanf("%d", &sign);
-		} while ((sign > 1) || (sign < 0));
-	} while (sign != 0);
+		if (sign != 6) { sign = Combinatorics_choice(); }
+		
+	} while (sign != 6);
 }
 void Placements_with_repetitions()
 {
-	int n, m, A_m_n = 1;
+	int n, m;
+	double A_m_n = 1;
 	do {
-		system("cls");
+		system(CLEAR); 
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
-	} while (n < 1);
+	} while ((n < 1) || (n>100));
+	
 	do {
-		system("cls");
-		printf("| Enter the number of elements in the subset. m = ");
-		scanf("%d", &m);
-	} while ((m < 1) || (m>n));
+		if (n > 40)
+		do{
+			printf("| Enter the number of elements in the subset. m = ");
+			scanf("%d", &m);
+			system(CLEAR);
+		} while ((m > 10) || (m < 1));
+		else {
+			printf("| Enter the number of elements in the subset. m = ");
+			scanf("%d", &m);
+			system(CLEAR);
+		}
+		if (m>10) { printf("| Too big number!\n| "); }
+	} while ((m < 1) || (m > n) || (m > 20));
 
 	for (int i = 0; i < m;i++)
 	{
 		A_m_n *= n;
 	}
-	printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
-	printf("| The number of permutations with repetitions of %d on %d is %d \n", n, m, A_m_n);
+	
+	if (A_m_n == 0) {
+		int sign;
+		printf("| Too big number!\n| ");
+		sign = Combinatorics_choice();
+		if (sign == 1) Placements_with_repetitions();
+		else if (sign == 0) Combinatorics_menu();
+	}
+	else {
+		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf("| The number of permutations with repetitions of %d on %d is %.0lf \n", n, m, A_m_n);
+	}
 }
 
 void Placements_without_repetitions()
 {
-	int n, m, numerator, denominator;
+	int n, m, i;
+	double numerator, denominator;
 	do {
-		system("cls");
+		system(CLEAR);
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while (n < 1);
 	do {
-		system("cls");
 		printf("| Enter the number of elements in the subset. m = ");
 		scanf("%d", &m);
+		system(CLEAR);
 	} while ((m < 1) || (m>n));
 
-	numerator = Combinatorics_factorial(n);
-	denominator = Combinatorics_factorial(n - m);
+	i = n - m + 1;
+	numerator = Combinatorics_factorial(n, i);
 
-	printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
-	printf("| The number of permutations without repetitions of %d on %d is %d \n", n, m, numerator/denominator);
+	if (numerator == 0) {
+		int sign;
+		printf("| Too big number!\n| ");
+		sign = Combinatorics_choice();
+		if (sign == 1) Placements_without_repetitions();
+		else if (sign == 0) Combinatorics_menu();
+	}
+	else {
+		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf("| The number of permutations without repetitions of %d on %d is %.0lf \n", n, m, numerator);
+	}
 }
 
 void Combinations_with_repetitions()
 {
-	int n, m, numerator, denominator_1, denominator_2;
+	int n, m, i;
+	double numerator, denominator;
 	do {
-		system("cls");
+		system(CLEAR);
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while (n < 1);
-	do {
-		system("cls");
+	do {		
 		printf("| Enter the number of elements in the subset. m = ");
 		scanf("%d", &m);
+		system(CLEAR);
 	} while ((m < 1) || (m>n));
 
-	numerator = Combinatorics_factorial(n + m - 1);
-	denominator_1 = Combinatorics_factorial(n - 1);
-	denominator_2 = Combinatorics_factorial(m);
-
-	printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
-	printf("| The number of combinations with repetitions of %d on %d is %d \n", n, m, numerator / (denominator_1*denominator_2));
+	i = n;
+	numerator = Combinatorics_factorial(n + m - 1, i);
+	denominator = Combinatorics_factorial(m, 1);
+	
+	if ((denominator == 0) || (numerator == 0)) {
+		int sign;
+		printf("| Too big number!\n| ");
+		sign = Combinatorics_choice();
+		if (sign == 1) Combinations_with_repetitions();
+		else if (sign == 0) Combinatorics_menu();
+	}
+	else {
+		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf("| The number of combinations with repetitions of %d on %d is %.0lf \n", n, m, numerator / denominator);
+	}
 }
+
 void Combinations_without_repetitions()
 {
-	int n, m,  numerator, denominator_1, denominator_2;
+	int n, m, i;
+	double numerator, denominator;
 	do {
-		system("cls");
+		system(CLEAR);
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while (n < 1);
 	do {
-		system("cls");
 		printf("| Enter the number of elements in the subset. m = ");
 		scanf("%d", &m);
+		system(CLEAR);
 	} while ((m < 1) || (m>n));
 
-	numerator = Combinatorics_factorial(n);
-	denominator_1 = Combinatorics_factorial(n - m);
-	denominator_2 = Combinatorics_factorial(m);
+	i = n - m + 1;
+	numerator = Combinatorics_factorial(n, i);
+	denominator = Combinatorics_factorial(m, 1);
 
-	printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
-	printf("| The number of combinations without repetitions of %d on %d is %d \n", n, m, numerator / (denominator_1*denominator_2));
+	if ((denominator == 0) || (numerator == 0)) {
+		int sign;
+		printf("| Too big number!\n| ");
+		sign = Combinatorics_choice();
+		if (sign == 1) Combinations_without_repetitions();
+		else if (sign == 0) Combinatorics_menu();
+	}
+	else {
+		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf("| The number of combinations without repetitions of %d on %d is %.0lf \n", n, m, numerator / denominator);
+	}
 }
 
 void Permutations()
 {
 	int n;
+	double P_n;
 	do {
-		system("cls");
+		system(CLEAR);
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while (n < 0);
-
-	printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
-	printf("| The number of permutations of %d is %d \n", n, Combinatorics_factorial(n));
+	P_n = Combinatorics_factorial(n, 1);
+	if (n > 20) {
+		int sign;
+		printf("| Too big number!\n| ");
+		sign = Combinatorics_choice();
+		if (sign == 1) Permutations();
+		else if (sign == 0) Combinatorics_menu();
+	}
+	else {
+		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n");
+		printf("| The number of permutations of %d is %.0lf \n", n, P_n);
+	}
 }

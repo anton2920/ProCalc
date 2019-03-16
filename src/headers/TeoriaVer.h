@@ -24,6 +24,7 @@ struct diskraspr
 	int x;
 	double p;
 };
+
 void key(diskraspr*row, int nrow);
 double probability();
 double MathWait(diskraspr*row, int nrow);
