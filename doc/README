@@ -20,6 +20,7 @@ Installation guide
 To install this program you need "libm.so" and "libSDL2.so" dynamic libraries.
 Then perform: 
 ```bash
+sh ./autogen.sh
 ./configure
 make
 sudo make install
