@@ -21,7 +21,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #include "../headers/header.h"
 #include "../headers/TeoriaVer.h"
 
-double probability()
+void probability(void)
 {
 	int alltry, deftry;
 	double ver;
@@ -33,12 +33,14 @@ double probability()
 	do
 		scanf("%d", &deftry);
 	while (deftry < 1);
+
 	ver = (deftry * 1.0 / alltry) * 100;
 	printf("| Probability of an outcome equals %.2lf%%\n", ver);
+
     prt_ln();
-	return ver;
 }
-int key(diskraspr*row, int nrow)
+
+int key(diskraspr *row, int nrow)
 {
 	do {
         printf("| Enter number of elements of a row: ");
@@ -55,7 +57,8 @@ int key(diskraspr*row, int nrow)
 	}
 	return nrow;
 }
-double MathWait(diskraspr*row, int nrow)
+
+double MathWait(diskraspr *row, int nrow)
 {
 	double sum = 0, sump = 0;
 	int u = key(row, nrow);
@@ -75,7 +78,8 @@ double MathWait(diskraspr*row, int nrow)
 		return 0;
 	}
 }
-double Dispercia(diskraspr*row, int nrow)
+
+double Dispercia(diskraspr *row, int nrow)
 {
 	double sum1 = 0, sump = 0, sum2 = 0, sumd = 0;
 	int u = key(row, nrow);
@@ -96,5 +100,4 @@ double Dispercia(diskraspr*row, int nrow)
 	sumd = sum2 - sum1 * sum1;
 	printf("| Dispersion equals to %2.2lf\n", sumd);
 	return 0;
-
 }

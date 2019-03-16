@@ -19,16 +19,21 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 #ifndef TeoriaVer_h
 #define TeoriaVer_h
+
+/* Structure declaration */
 struct diskraspr
 {
 	int x;
 	double p;
 };
 
-int key(diskraspr*row, int nrow);
-double probability();
-double MathWait(diskraspr*row, int nrow);
-double Dispercia(diskraspr*row, int nrow);
+/* func.ter.ver.cpp */
+int key(diskraspr *, int);
+void probability(void);
+double MathWait(diskraspr *, int);
+double Dispercia(diskraspr *, int);
+
+/* ter.ver.menu.cpp */
 int verdant_menu(void);
 
 #endif
