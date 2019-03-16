@@ -1,4 +1,4 @@
-/*
+﻿/*
 ProCalc � powerful multifunctional calculator
 Copyright � 2019 Tushino Software LLC
 
@@ -61,14 +61,15 @@ int Combinatorics_menu(void) {
 			"|       2) Placements without repetitions                    |\n"
 			"|       3) Combinations with repetitions                     |\n"
 			"|       4) Combinations without repetitions                  |\n"
-			"|       5) Permutations                                      |\n"
+			"|       5) Permutations with repetitions                     |\n"
+			"|       6) Permutations without repetitions                  |\n"
 			"|                                                            |\n"
 			"|       >> Type \"quit\" to terminate this program <<          |\n"
 			"|                                                            |\n");
 		printf("| Answer: ");
 		func = getchar();
 		prt_ln();
-		if (isdigit(func) && func >= '1' && func <= '5') {
+		if (isdigit(func) && func >= '1' && func <= '6') {
 			func -= '0';
 			if ((junk = getchar()) != '\n') {
 				while ((junk = getchar()) != '\n')
@@ -91,7 +92,10 @@ int Combinatorics_menu(void) {
 				Combinations_without_repetitions();
 				break;
 			case 5:
-				Permutations();
+				Permutations_with_repetitions();
+				break;
+			case 6:
+				Permutations_without_repetitions();
 				break;
 			}
 
@@ -252,7 +256,7 @@ void Combinations_without_repetitions()
 	}
 }
 
-void Permutations()
+void Permutations_with_repetitions()
 {
 	int n;
 	double P_n;
@@ -265,11 +269,45 @@ void Permutations()
 		int sign;
 		printf("| Too big number!\n| ");
 		sign = Combinatorics_choice();
-		if (sign == 1) Permutations();
+		if (sign == 1) Permutations_with_repetitions();
 		else if (sign == 0) Combinatorics_menu();
 	}
 	else {
 		prt_ln();
 		printf("| The number of permutations of %d is %.0lf \n", n, P_n);
+	}
+}
+
+void Permutations_without_repetitions()
+{
+	int n[100], j, long_n=0;
+	double P_n;
+	
+	printf("| Enter the composition of the permutation with repetitions. To finish typing, enter 0 ");
+	for (j = 0; j < 100; j++)
+	{
+		do {
+			scanf("%d", &n[j]);
+		} while ((j < 0) || (j > 100 - long_n));
+		long_n += n[j];
+		if (n[j] == 0) break;
+	}
+
+	P_n = Combinatorics_factorial(long_n, 1);
+	for (int k = 0; k < j; k++)
+	{
+		n[k] = Combinatorics_factorial(n[k], 1);
+		P_n /= n[k];
+	}
+	if (P_n == 0) {
+		int sign;
+		printf("| Too big number!\n| ");
+		sign = Combinatorics_choice();
+		if (sign == 1) Permutations_without_repetitions();
+		else if (sign == 0) Combinatorics_menu();
+	}
+	else {
+		prt_ln();
+		printf("| The number of permutations is %.0lf \n", P_n);
 	}
 }
