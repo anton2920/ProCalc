@@ -17,9 +17,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
-#define _CRT_SECURE_NO_WARNINGS
+
 #include "../headers/TeoriaVer.h"
 #include "../headers/header.h"
+
 int verdant_menu(void) {
 	struct diskraspr row[100];
 	/* Initializing variables */
@@ -28,18 +29,18 @@ int verdant_menu(void) {
 	/* I/O flow */
 	while (1) {
 		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
-			"|                                                            |\n"
-			"|                      >> ProCalc <<                         |\n"
-			"|                                                            |\n"
-			"|  >> Choose a function:                                     |\n"
-			"|                                                            |\n"
-			"|       1) Probability m/n                                   |\n"
-			"|       2) Dispercia                                         |\n"
-			"|       3) Mathematical expectation                           |\n"
-			"|                                                            |\n"
-			"|       >> Type \"back\" to go to the previous menu <<         |\n"
-			"|       >> Type \"quit\" to terminate this program <<          |\n"
-			"|                                                            |\n");
+"|                                                            |\n"
+"|             >> Probability and statistics <<               |\n"
+"|                                                            |\n"
+"|  >> Choose a function:                                     |\n"
+"|                                                            |\n"
+"|       1) Probability m / n                                 |\n"
+"|       2) Dispercia                                         |\n"
+"|       3) Mathematical expectation                          |\n"
+"|                                                            |\n"
+"|       >> Type \"back\" to go to the previous menu <<         |\n"
+"|       >> Type \"quit\" to terminate this program <<          |\n"
+"|                                                            |\n");
 		printf("| Answer: ");
 		func = getchar();
 		prt_ln();
@@ -66,10 +67,10 @@ int verdant_menu(void) {
 				break;
 			}
 
-			if (!n) {
-				func = 'b';
-			}
+            while ((junk = getchar()) != '\n')
+                ;
 
+            return 1;
 		}
 		else if (func == 'q') {
 			if (quit_m()) {

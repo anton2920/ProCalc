@@ -19,41 +19,39 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include "../headers/header.h"
-struct diskraspr
-{
-	int x;
-	double p;
-};
+#include "../headers/TeoriaVer.h"
+
 double probability()
 {
 	int alltry, deftry;
 	double ver;
-	printf("| Enter number of all try ");
+	printf("| Enter the number of outcomes: ");
 	do
 		scanf("%d", &alltry);
 	while (alltry < 1);
-	printf("| Enter number of the outcames interesting you ");
+	printf("| Enter number of the outcomes, which interests you: ");
 	do
 		scanf("%d", &deftry);
 	while (deftry < 1);
 	ver = (deftry * 1.0 / alltry) * 100;
-	printf("| Probability of an outcome is equal %3.2lf %%\n", ver);
+	printf("| Probability of an outcome equals %.2lf%%\n", ver);
+    prt_ln();
 	return ver;
 }
 int key(diskraspr*row, int nrow)
 {
-
-	printf("| Enter number of elements of a row \n");
-	do
-		scanf("%d", &nrow);
-	while (nrow < 2 || nrow>100);
-	printf("| Set a row of X\n");
+	do {
+        printf("| Enter number of elements of a row: ");
+        scanf("%d", &nrow);
+    } while (nrow < 2 || nrow > 100);
+	printf("| Set a row of X:                                            |\n");
 	for (int i = 0; i < nrow; i++)
 	{
-		printf("x%d=", i+1);
+		printf("| x[%d] = ", i + 1);
 		scanf("%d", &row[i].x);
-		printf("p%d=", i+1);
+		printf("| p[%d] = ", i+1);
 		scanf("%lf", &row[i].p);
+        prt_ln();
 	}
 	return nrow;
 }
@@ -68,12 +66,12 @@ double MathWait(diskraspr*row, int nrow)
 	}
 	if (sump != 1)
 	{
-		printf("| Sum of p must be equal 1");
+		printf("| Sum of p must be equals to one                             |\n");
 		return 1;
 	}
 	else
 	{
-		printf("| Mathmetical expectation is equal %3.3lf\n", sum);
+		printf("| Mathematical expectation equals to %3.3lf\n", sum);
 		return 0;
 	}
 }
@@ -88,7 +86,7 @@ double Dispercia(diskraspr*row, int nrow)
 	}
 	if (sump != 1)
 	{
-		printf("| Sum of p must be equal 1");
+		printf("| Sum of p must be equals to one                             |\n");
 		return 1;
 	}
 	for (int i = 0; i < u; i++)
@@ -96,7 +94,7 @@ double Dispercia(diskraspr*row, int nrow)
 		sum2 += row[i].x*row[i].x*row[i].p;
 	}
 	sumd = sum2 - sum1 * sum1;
-	printf("| Dispersion is equal %2.2lf\n ", sumd);
+	printf("| Dispersion equals to %2.2lf\n", sumd);
 	return 0;
 
 }

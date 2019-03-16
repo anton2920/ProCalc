@@ -26,9 +26,15 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 
 int main(int argc, const char *argv[]) {
 
+    /* Initializing variables */
+    int func;
+
     /* Main part */
     do {
-        main_menu();
+        func = main_menu();
+        if (func == -1) {
+            break;
+        }
     } while (menu_continue());
 
     /* Returning value */
@@ -142,13 +148,13 @@ int back_m(void) {
 int main_menu(void) {
 
     /* Initializing variables */
-    int func, junk, n;
+    int func, junk, n = 0;
 
     /* I/O flow */
     while (1) {
         printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
 "|                                                            |\n"
-"|                      >> ProCalc <<                         |\n"
+"|                     >> ProCalc v1.0 <<                     |\n"
 "|                                                            |\n"
 "|  >> Choose a type of a calculator:                         |\n"
 "|                                                            |\n"
@@ -175,16 +181,17 @@ int main_menu(void) {
 
             switch (func) {
                 case 1:
-                    // n = n_menu();
                     break;
                 case 2:
                     break;
                 case 3:
+                    // n = Combinatorics_menu();
                     break;
                 case 4:
-                    polynom_menu();
+                    n = polynom_menu();
                     break;
                 case 5:
+                    n = verdant_menu();
                     break;
                 case 6:
                     break;
@@ -193,7 +200,11 @@ int main_menu(void) {
             }
 
             if (!n) {
-                func = 'b';
+                continue;
+            } else if (n == -1) {
+                return -1;
+            } else {
+                return 0;
             }
 
         } else if (func == 'q') {
