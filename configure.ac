@@ -1,10 +1,10 @@
 # Autoconf requirements
 
 # Initialize, but use more options. Note parameters brackts and whitespace.
-AC_INIT([SetsCalc], [1.0], [anton2920@gmail.com])
+AC_INIT([ProCalc], [1.0], [anton2920@gmail.com])
 
 # Safety check - list a source file that wouldn't be in other directories:
-AC_CONFIG_SRCDIR([src/main.c])
+AC_CONFIG_SRCDIR([src/main.cpp])
 
 # Put configuration results here, so we can easily #include them:
 AC_CONFIG_HEADERS([config.h])
@@ -15,14 +15,21 @@ AC_CONFIG_MACRO_DIR([m4])
 
 # Enable «automake» to simplify creating makefiles:
 AM_INIT_AUTOMAKE([subdir-objects -Wall])
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile])
 
 # Look for a C compiler:
-AC_LANG(C)
-AC_PROG_CC
+AC_LANG(CXX)
+AC_PROG_CXX
 
 # Perhaps check for: (more) programs, libraries, header files, types,
 # structures, compiler characteristics, library functions, system services.
+AC_SEARCH_LIBS([SDL_INIT], [SDL], [], [
+  AC_MSG_ERROR([ProCalc: unable to find SDL lib])
+  ])
+
+AC_SEARCH_LIBS([sin], [m], [], [
+  AC_MSG_ERROR([ProCalc: unable to find math lib])
+  ])
 
 # Do final output.
 AC_OUTPUT
