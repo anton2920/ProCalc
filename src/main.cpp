@@ -195,12 +195,6 @@ int main_menu(void) {
             } else {
                 continue;
             }
-        } else if (func == 'b') {
-            if (back_m()) {
-                return 0;
-            } else {
-                continue;
-            }
         } else {
             no_cmd();
             while ((junk = getchar()) != '\n')
