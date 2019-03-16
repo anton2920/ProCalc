@@ -24,6 +24,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 /* Including standard libraries */
 #include <iostream>
 #include <cmath>
+#include <SDL2/SDL.h>
 
 /* Including local headers */
 #include "fraction.h"

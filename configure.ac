@@ -18,9 +18,8 @@ AM_INIT_AUTOMAKE
 AC_CONFIG_FILES([Makefile src/Makefile doc/Makefile])
 
 # Look for a C compiler:
-AC_LANG(CXX)
+AC_LANG([C++])
 AC_PROG_CXX
-AC_PROG_C
 
 # Perhaps check for: (more) programs, libraries, header files, types,
 # structures, compiler characteristics, library functions, system services.
@@ -28,12 +27,16 @@ LT_INIT
 AC_ENABLE_SHARED
 AC_PROG_LIBTOOL(libtool)
 
-AC_SEARCH_LIBS([SDL_INIT], [SDL], [], [
-  AC_MSG_ERROR([ProCalc: unable to find SDL lib])
+AC_SEARCH_LIBS([SDL_Init], [SDL SDL2], [], [
+  AC_MSG_ERROR([unable to find SDL lib])
   ])
 
 AC_SEARCH_LIBS([sin], [m], [], [
-  AC_MSG_ERROR([ProCalc: unable to find math lib])
+  AC_MSG_ERROR([unable to find math lib])
+  ])
+
+ AC_CHECK_HEADERS([cmath iostream SDL2/SDL.h string], [], [
+  AC_MSG_ERROR([unable to find necessary headers])
   ])
 
  # Checks for typedefs, structures, and compiler characteristics.

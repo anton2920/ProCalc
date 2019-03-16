@@ -30,15 +30,3 @@ libbigint_la_SOURCES = libs/bigint.cpp
 # libterver.la
 libterver_la_LDFLAGS = -version-info 0:0:0
 libterver_la_SOURCES = libs/func.ter.ver.cpp libs/ter.ver.menu.cpp
-
-
-libHelloWorld_la_LDFLAGS = -version-info 0:0:0
-libHelloWorld_la_SOURCES = libs/polynom.lib.cpp libs/polynom.main.cpp headers/polynom.h
-
-
-libHelloWorld_la_LDFLAGS = -version-info 0:0:0
-libHelloWorld_la_SOURCES = libs/polynom.lib.cpp libs/polynom.main.cpp headers/polynom.h
-
-
-libHelloWorld_la_LDFLAGS = -version-info 0:0:0
-libHelloWorld_la_SOURCES = libs/polynom.lib.cpp libs/polynom.main.cpp headers/polynom.h
