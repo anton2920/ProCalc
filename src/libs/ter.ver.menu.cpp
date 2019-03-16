@@ -35,7 +35,7 @@ int main_menu(void) {
 			"|                                                            |\n"
 			"|       1) Probability m/n                                   |\n"
 			"|       2) Dispercia                                         |\n"
-			"|       3) Mathmetical expectation                           |\n"
+			"|       3) Mathematical expectation                           |\n"
 			"|                                                            |\n"
 			"|       >> Type \"back\" to go to the previous menu <<         |\n"
 			"|       >> Type \"quit\" to terminate this program <<          |\n"
@@ -53,18 +53,14 @@ int main_menu(void) {
 			}
 
 			switch (func) {
-			case 1:probability;
-				// n = n_menu();
+			case 1:
+				probability();
 				break;
-			case 2:Dispercia(row, nrow);
+			case 2:
+				Dispercia(row, nrow);
 				break;
-			case 3:MathWait(row, nrow); 
-				break;
-			case 4:
-				break;
-			case 5:
-				break;
-			case 6:
+			case 3:
+				MathWait(row, nrow);
 				break;
 			default:
 				break;
