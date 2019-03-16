@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "Combinatorics.h"
-#include "header.h"
+#include "../headers/Combinatorics.h"
+#include "../headers/header.h"
 
 int Combinatorics_choice()
 {
