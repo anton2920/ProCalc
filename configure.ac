@@ -14,12 +14,13 @@ AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 
 # Enable «automake» to simplify creating makefiles:
-AM_INIT_AUTOMAKE([-fPIC subdir-objects -Wall])
+AM_INIT_AUTOMAKE
 AC_CONFIG_FILES([Makefile src/Makefile doc/Makefile])
 
 # Look for a C compiler:
 AC_LANG(CXX)
 AC_PROG_CXX
+AC_PROG_C
 
 # Perhaps check for: (more) programs, libraries, header files, types,
 # structures, compiler characteristics, library functions, system services.
@@ -34,6 +35,11 @@ AC_SEARCH_LIBS([SDL_INIT], [SDL], [], [
 AC_SEARCH_LIBS([sin], [m], [], [
   AC_MSG_ERROR([ProCalc: unable to find math lib])
   ])
+
+ # Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_INLINE
+AC_TYPE_SIZE_T
 
 # Do final output.
 AC_OUTPUT
