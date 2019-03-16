@@ -1,6 +1,6 @@
 /*
-ProCalc — powerful multifunctional calculator
-Copyright © 2019 Tushino Software LLC
+ProCalc ï¿½ powerful multifunctional calculator
+Copyright ï¿½ 2019 Tushino Software LLC
 
 This file is part of ProCalc.
 
@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
-# include "../ headers / header.h"
+# include "../headers/header.h"
 
 int Combinatorics_choice()
 {
@@ -44,14 +44,14 @@ double Combinatorics_factorial(int limit, int min)
 	return factorial;
 }
 
-int Combinatorics_menu() {
+int Combinatorics_menu(void) {
 
 	/* Initializing variables */
 	int func, junk, n = 0;
 
 	/* I/O flow */
 	while (1) {
-		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
+		printf(" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n"
 			"|                                                            |\n"
 			"|                     >> ProCalc v1.0 <<                     |\n"
 			"|                                                            |\n"

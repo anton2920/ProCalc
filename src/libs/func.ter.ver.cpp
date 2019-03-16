@@ -75,8 +75,7 @@ void MathWait(diskraspr *row, int nrow)
 		
 	}
 	printf("| Mathematical expectation equals to %2.2lf\n", sum);
-		
-	
+    prt_ln();
 }
 
 void Dispercia(diskraspr *row, int nrow)
@@ -96,6 +95,5 @@ void Dispercia(diskraspr *row, int nrow)
 	sumd = sum2 - sum1 * sum1;
 
 	printf("| Dispersion equals to %2.2lf\n", sumd);
-
-    
+    prt_ln();
 }

@@ -21,7 +21,7 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 #define Combinatorics_h
 
 double Combinatorics_factorial(int limit, int min);
-void Combinatorics_menu();
+int Combinatorics_menu(void);
 void Placements_with_repetitions();
 void Placements_without_repetitions();
 void Combinations_with_repetitions();
