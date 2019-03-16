@@ -19,7 +19,6 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include "../headers/header.h"
-#include "../headers/TeoriaVer.h"
 
 void probability(void)
 {

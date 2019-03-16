@@ -18,7 +18,6 @@ You should have received a copy of the GNU General Public License
 along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "../headers/TeoriaVer.h"
 #include "../headers/header.h"
 
 int verdant_menu(void) {

@@ -21,8 +21,15 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #ifndef MAIN_HEADER_FILE
 #define MAIN_HEADER_FILE
 
+/* Including standard libraries */
 #include <iostream>
 #include <cmath>
+
+/* Including local headers */
+#include "fraction.h"
+#include "Combinatorics.h"
+#include "polynom.h"
+#include "TeoriaVer.h"
 
 /* main.cpp */
 void prt_ln(void);
