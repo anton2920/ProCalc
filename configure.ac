@@ -15,7 +15,7 @@ AC_CONFIG_MACRO_DIR([m4])
 
 # Enable «automake» to simplify creating makefiles:
 AM_INIT_AUTOMAKE
-AC_CONFIG_FILES([Makefile src/Makefile doc/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile doc/Makefile man/Makefile examples/Makefile])
 
 # Look for a C compiler:
 AC_LANG([C++])
