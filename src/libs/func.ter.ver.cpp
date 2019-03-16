@@ -47,9 +47,10 @@ int key(diskraspr *row, int nrow)
         scanf("%d", &nrow);
     } while (nrow < 2 || nrow > 100);
     do {
-        printf("| Set a row of X:                                            |\n");
-        printf("| ATTENTION! Values p have to is entered through a . but not a , ATTENTION!\n");
-        for (int i = 0; i < nrow; i++) {
+        printf("| Set a row of X and probability P:                                            |\n");
+        printf("| ATTENTION! Values P have to is entered through a . but not a , ATTENTION!\n");
+        for (int i = 0; i < nrow; i++) 
+		{
             printf("| x[%d] = ", i + 1);
             scanf("%d", &row[i].x);
             printf("| p[%d] = ", i + 1);
@@ -57,33 +58,28 @@ int key(diskraspr *row, int nrow)
             sump += row[i].p;
             prt_ln();
         }
+		if (sump != 1)
+		printf("| Sum of P must be equals to one                             |\n");
     } while (sump != 1);
 
 	return nrow;
 }
 
-double MathWait(diskraspr *row, int nrow)
+void MathWait(diskraspr *row, int nrow)
 {
 	double sum = 0;
 	int u = key(row, nrow);
 	for (int j = 0; j < u; j++)
 	{
 		sum += row[j].x*row[j].p;
-		sump += row[j].p;
+		
 	}
-	if (sump != 1)
-	{
-		printf("| Sum of p must be equals to one                             |\n");
-		return 1;
-	}
-	else
-	{
-		printf("| Mathematical expectation equals to %3.3lf\n", sum);
-		return 0;
-	}
+	printf("| Mathematical expectation equals to %2.2lf\n", sum);
+		
+	
 }
 
-double Dispercia(diskraspr *row, int nrow)
+void Dispercia(diskraspr *row, int nrow)
 {
 	double sum1 = 0,sum2 = 0, sumd = 0;
 	int u = key(row, nrow);
@@ -91,12 +87,7 @@ double Dispercia(diskraspr *row, int nrow)
 	{
 		sum1 += row[j].x*row[j].p;
 
-		sump += row[j].p;
-	}
-	if (sump != 1)
-	{
-		printf("| Sum of p must be equals to one                             |\n");
-		return 1;
+		
 	}
 	for (int i = 0; i < u; i++)
 	{
@@ -106,5 +97,5 @@ double Dispercia(diskraspr *row, int nrow)
 
 	printf("| Dispersion equals to %2.2lf\n", sumd);
 
-    return 0;
+    
 }
