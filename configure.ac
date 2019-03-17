@@ -31,10 +31,25 @@ AC_ENABLE_SHARED
 AC_PROG_LIBTOOL
 
 # Check for SDL2
-AC_SEARCH_LIBS([SDL_Init], [SDL SDL2], [], [
-AC_MSG_WARN([without SDL ProCalc is not able to plot a graph])
+AC_SEARCH_LIBS([SDL_Init], [SDL2 SDL], [], [
+	AC_MSG_WARN([without SDL ProCalc is not able to plot a graph])
 	])
- 
+
+AC_CHECK_HEADERS([SDL2/SDL.h], [], [])
+
+AC_CHECK_HEADERS([SDL/SDL.h], [], [],
+[#ifndef HAVE_SDL2_SDL_H && HAVE_SDL_H
+#include <SDL/SDL.h>
+endif
+])
+
+AC_CHECK_HEADERS([SDL.h], [], [],
+[#ifndef HAVE_SDL2_SDL_H && HAVE_SDL_SDL_H
+#include <SDL.h>
+#endif
+])
+
+# Check for essential libraries 
 AC_SEARCH_LIBS([sin], [m], [], [
 	AC_MSG_ERROR([unable to find math lib])
 	])
@@ -43,28 +58,18 @@ AC_CHECK_HEADERS([cmath iostream string], [], [
 	AC_MSG_ERROR([unable to find necessary headers])
 	])
 
-AC_CHECK_HEADERS([SDL2/SDL.h], [], [],
-[#ifdef HAVE_SDL2_SDL_H
-#include <SDL2/SDL.h>
-endif
-])
-
-AC_CHECK_HEADERS([SDL/SDL.h], [], [],
-[#ifdef HAVE_SDL_SDL_H
-#include <SDL/SDL.h>
-endif
-])
-
-AC_CHECK_HEADERS([SDL.h], [], [],
-[#ifdef HAVE_SDL_H
-#include <SDL.h>
-#endif
-])
-
  # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL
 AC_C_INLINE
 AC_TYPE_SIZE_T
+AC_CHECK_HEADER_STDBOOL
+AC_C_INLINE
+AC_TYPE_PID_T
+AC_TYPE_SIZE_T
+AC_TYPE_UINT16_T
+AC_TYPE_UINT32_T
+AC_TYPE_UINT64_T
+AC_TYPE_UINT8_T
 
 # Do final output.
 AC_OUTPUT
