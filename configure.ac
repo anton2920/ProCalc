@@ -54,7 +54,11 @@ AC_SEARCH_LIBS([sin], [m], [], [
 	AC_MSG_ERROR([unable to find math lib])
 	])
 
-AC_CHECK_HEADERS([cmath iostream string], [], [
+AC_SEARCH_LIBS([printf], [c], [], [
+	AC_MSG_ERROR([unable to find c lib])
+	])
+
+AC_CHECK_HEADERS([cstdio cmath iostream string], [], [
 	AC_MSG_ERROR([unable to find necessary headers])
 	])
 

@@ -22,6 +22,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #define PROCALC_MAIN_HEADER_FILE
 
 /* Including standard libraries */
+#include <cstdio>
 #include <iostream>
 #include <cmath>
 
