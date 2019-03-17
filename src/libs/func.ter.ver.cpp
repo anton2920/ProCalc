@@ -24,14 +24,19 @@ void probability(void)
 {
 	int alltry, deftry;
 	double ver;
-	printf("| Enter the number of outcomes: ");
 	do
-		scanf("%d", &alltry);
-	while (alltry < 1);
-	printf("| Enter number of the outcomes, which interests you: ");
-	do
-		scanf("%d", &deftry);
-	while (deftry < 1);
+	{
+		printf("| Enter the number of outcomes: ");
+		do
+			scanf("%d", &alltry);
+		while (alltry < 1);
+		printf("| Enter number of the outcomes, which interests you: ");
+		do
+			scanf("%d", &deftry);
+		while (deftry < 1);
+		if (alltry < deftry)
+			printf("| Number of all outcomes has to be less than outcomes,which interests you \n");
+	} while (alltry < deftry);
 
 	ver = (deftry * 1.0 / alltry) * 100;
 
