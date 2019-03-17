@@ -17,9 +17,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
+
 #ifndef SOURCE_H
 #define SOURCE_H
-#include <iostream>
+
 struct Number{
 	int base=0;
 	int chis=0;
