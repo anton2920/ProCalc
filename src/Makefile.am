@@ -5,7 +5,7 @@ bin_PROGRAMS = ProCalc
 
 ProCalc_SOURCES = main.cpp
 ProCalc_LDADD = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la
-ProCalc_LDFLAGS = -lm -lSDL2
+ProCalc_LDFLAGS =
 
 include_HEADERS = headers/*
 
