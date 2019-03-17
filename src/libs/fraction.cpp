@@ -1,0 +1,109 @@
+#include "../headers/header.h"
+void base10(Number numb){
+	std::cout<<numb.base+double(numb.chis)/numb.znam;
+}
+void sravn(Number numb1, Number numb2){
+	per(&numb1,&numb2);
+	prev(&numb1,&numb2);
+	if (numb1.chis>numb2.chis){
+		std::cout<<"First fraction > second fraction";
+	}
+	else if (numb1.chis<numb2.chis){
+		std::cout<<"First fraction < second fraction";
+	}
+	else{
+		std::cout<<"First fraction = second fraction";
+	}
+}
+void read(Number *numb){
+	std::cout<<"\nEnter a fraction in the format A B C/nA:Where the basis/nB:numerator/nC:denominator\n";
+	do{
+		std::cin>>numb->base>>numb->chis>>numb->znam;
+	}while(numb->base<0 || numb->chis<0 || numb->znam<1);
+}
+void write(Number k){
+	if (k.chis==0 && k.base==0) std::cout<<0;
+	if (k.base!=0) std::cout<<k.base<<" ";
+	if (k.chis!=0) std::cout<<k.chis<<"/"<<k.znam;
+}
+int nod(int a,int b){
+	while (a*b>0){
+		a>b? a%=b:b%=a;
+	}
+	return (a+b);
+}
+int nok(int a,int b){
+	return (a*b/nod(a,b));
+}
+void add(Number *numb1,Number *numb2,Number *numb3){
+	numb3->base=numb1->base+numb2->base;
+	prev(numb1,numb2);
+	numb3->znam=numb1->znam;
+	numb3->chis=numb1->chis+numb2->chis;
+	numb3->base=numb1->base+numb2->base;
+	numb3->base+=videl(numb3->chis,numb3->znam);
+	write(*numb3);
+}
+void vich(Number *numb1,Number *numb2,Number *numb3){
+	int flag=1;
+	per(numb1,numb2);
+	prev(numb1,numb2);
+	numb3=numb1;
+	if (numb2->chis>numb1->chis){
+		numb3=numb2;
+		numb2=numb1;
+		numb1=numb3;
+		flag=-1;
+	}
+	numb3->znam=numb1->znam;
+	numb3->chis=numb1->chis-numb2->chis;
+	//k.base+=videl(k.chis,k.znam);
+	numb3->base=videl(numb3->chis,numb3->znam);
+	numb3->base*=flag;
+	write(*numb3);
+}
+void del(Number *numb1,Number *numb2,Number *numb3){
+	int x;
+	per(numb1,numb2);
+	x=numb2->chis;
+	numb2->chis=numb2->znam;
+	numb2->znam=x;
+	if (numb2->znam==0){
+		std::cout<<"I can not div by 0"; //попытка деления на ноль
+	}
+	else{
+		ymn(numb1,numb2,numb3);//деление заменили на умножение на обратную дробь
+	}
+}
+void ymn(Number *numb1,Number *numb2,Number *numb3){
+	per(numb1,numb2);
+	numb3->chis=numb1->chis*numb2->chis;
+	numb3->znam=numb1->znam*numb2->znam;
+	numb3->base+=videl(numb3->chis,numb3->znam);
+	write(*numb3);
+}
+int videl(int &a,int &b){
+	int m=0;
+	if (a>=b){
+		m=a/b;
+		a-=b*m;		
+	}
+	int prom=nod(a,b);
+	a/=prom;
+	b/=prom;
+	return m;
+}
+
+void per(Number *numb1,Number *numb2){
+	numb1->chis+=numb1->znam*numb1->base;
+	numb1->base=0;
+	numb2->chis+=numb2->znam*numb2->base;
+	numb2->base=0;
+}
+void prev(Number *numb1,Number *numb2){
+	int prom1=nok(numb1->znam,numb2->znam);
+	numb1->chis=prom1/numb1->znam*numb1->chis;
+	numb2->chis=prom1/numb2->znam*numb2->chis;
+	numb1->znam=prom1;
+	numb2->znam=prom1;
+}
