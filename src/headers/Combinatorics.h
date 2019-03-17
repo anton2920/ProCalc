@@ -22,7 +22,8 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #define Combinatorics_h
 
 /* Combinatorics.cpp */
-double Combinatorics_factorial(int limit, int min);
+unsigned long long int Combinatorics_factorial(int limit, int min);
+void Combinatorics_read_n_m(int *p_n, int * p_m);
 void Placements_with_repetitions();
 void Placements_without_repetitions();
 void Combinations_with_repetitions();
