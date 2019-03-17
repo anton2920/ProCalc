@@ -21,13 +21,31 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #ifndef PROCALC_MAIN_HEADER_FILE
 #define PROCALC_MAIN_HEADER_FILE
 
+/* config.h */
+#include "config.h"
+
 /* Including standard libraries */
-#include <cstdio>
-#include <iostream>
-#include <cmath>
+#if (HAVE_CMATH == 1)
+	#include <cmath>
+#endif
+#if (HAVE_CSTDIO == 1)
+	#include <cstdio>
+#endif
+#if (HAVE_CMATH == 1)
+	#include <cmath>
+#endif
+#if (HAVE_IOSTREAM == 1)
+	#include <iostream>
+#endif
+#if (HAVE_SDL2_SDL_H == 1)
+	#include <SDL2/SDL.h>
+#elif (HAVE_SDL_H == 1)
+	#include <SDL.h>
+#elif (HAVE_SDL_SDL_H == 1)
+	#include <SDL/SDL.h>
+#endif
 
 /* Including local headers */
-#include "config.h"
 #include "fraction.h"
 #include "Combinatorics.h"
 #include "polynom.h"
