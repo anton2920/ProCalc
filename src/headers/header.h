@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#ifndef MAIN_HEADER_FILE
-#define MAIN_HEADER_FILE
+#ifndef PROCALC_MAIN_HEADER_FILE
+#define PROCALC_MAIN_HEADER_FILE
 
 /* Including standard libraries */
 #include <iostream>
