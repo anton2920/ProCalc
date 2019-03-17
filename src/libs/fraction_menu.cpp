@@ -20,7 +20,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 
 #include "../headers/header.h"
 
-int Combinatorics_menu(void) {
+int fraction_menu(void) {
 
     /* Initializing variables */
     int func, junk, n = 0;
