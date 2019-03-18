@@ -18,7 +18,8 @@ You should have received a copy of the GNU General Public License
 along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "../headers/header.h"
+#include "header.h"
+using namespace Dodecahedron;
 
 int Combinatorics_choice()
 {
@@ -39,7 +40,7 @@ void Combinatorics_read_n_m(int *p_n, int *p_m)
 	do {
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", p_n);
-	} while ((*p_n < 1) || (*p_n > 100));
+	} while (*p_n < 1);
 
 	do {
 		printf("| Enter the number of elements in the subset. m = ");
@@ -47,9 +48,9 @@ void Combinatorics_read_n_m(int *p_n, int *p_m)
 	} while ((*p_m < 1) || (*p_m > *p_n));
 }
 
-unsigned long long int Combinatorics_factorial(int limit, int min)
+Bigint Combinatorics_factorial(int limit, int min)
 {
-	unsigned long long int factorial = 1;
+	Bigint factorial = 1;
 	
 	for (int i = min;i <= limit;i++)
 	{
@@ -61,134 +62,111 @@ unsigned long long int Combinatorics_factorial(int limit, int min)
 void Placements_with_repetitions()
 {
 	int n, m, sign = 0;
-	unsigned long long int  A_m_n = 1;
-	do{
-		Combinatorics_read_n_m(&n, &m);
+	Bigint  A_m_n = 1;
 	
-		for (int i = 0; i < m;i++)
-		{
-			A_m_n *= n;
-		}
-		if (A_m_n <=0 )
-		{
-			printf("| Too big number!\n| ");
-			sign = Combinatorics_choice();
-		}
-	} while (sign != 0); 
+	Combinatorics_read_n_m(&n, &m);
+	
+	for (int i = 0; i < m;i++)
+	{
+		A_m_n *= n;
+	}
+		
 	prt_ln();
-	printf("| The number of placements with repetitions of %d on %d is %lli \n", n, m, A_m_n);
-    	prt_ln();
+	std::cout << "| The number of placements with repetitions of" << n << " on " << m << " is " << A_m_n;
+	printf("\n");
+    prt_ln();
 }
 
 void Placements_without_repetitions()
 {
 	int n, m, i, sign=0;
-	unsigned long long int  A_m_n = 1;
-	do{
+	Bigint  A_m_n = 1;
 		
-		Combinatorics_read_n_m(&n, &m);
+	Combinatorics_read_n_m(&n, &m);
 
-		i = n - m + 1;
-		A_m_n = Combinatorics_factorial(n, i);
-		if (A_m_n <= 0)
-		{
-			printf("| Too big number!\n| ");
-			sign = Combinatorics_choice();
-		}
-	} while (sign != 0);
-	
+	i = n - m + 1;
+	A_m_n = Combinatorics_factorial(n, i);
+		
 	prt_ln();
-	printf("| The number of placements without repetitions of %d on %d is %lli \n", n, m, A_m_n);
+	std::cout << "| The number of placements without repetitions of" << n << " on " << m << " is " << A_m_n;
+	printf("\n");
     prt_ln();
 }
 
 void Combinations_with_repetitions()
 {
 	int n, m, i, j, sign=0;
-	unsigned long long int numerator, denominator;
-	do{
-		Combinatorics_read_n_m(&n, &m);
-
-		if (n> (m+1))
-		{
-			i = n;
-			j = m;
-		}
-		else {
-			i = m + 1;
-			j = n - 1;
-		}
-		numerator = Combinatorics_factorial(n + m - 1, i);
-		denominator = Combinatorics_factorial(j, 1);
+	Bigint numerator, denominator;
 	
-		if ((denominator <= 0) || (numerator <= 0)) {
-			printf("| Too big number!\n| ");
-			sign = Combinatorics_choice();
-		}
-	} while (sign != 0);
+	Combinatorics_read_n_m(&n, &m);
+
+	if (n> (m+1))
+	{
+		i = n;
+		j = m;
+	}
+	else {
+		i = m + 1;
+		j = n - 1;
+	}
+	numerator = Combinatorics_factorial(n + m - 1, i);
+	denominator = Combinatorics_factorial(j, 1);
+	
 	prt_ln();
-	printf("| The number of combinations with repetitions of %d on %d is %lli \n", n, m, numerator / denominator);
-    	prt_ln();
+	std::cout << "| The number of combinations with repetitions of" << n << " on " << m << " is " << numerator / denominator;
+	printf("\n");
+    prt_ln();
 }
 
 void Combinations_without_repetitions()
 {
 	int n, m, i, j, sign=0;
-	unsigned long long int numerator, denominator;
-	do{
-		Combinatorics_read_n_m(&n, &m);
+	Bigint numerator, denominator;
+	
+	Combinatorics_read_n_m(&n, &m);
 
-		if ((m + 1) > (n - m + 1))
-		{
-			i = m + 1;
-			j = n - m;
-		}
-		else {
-			i = n - m + 1;
-			j = m;
-		}
+	if ((m + 1) > (n - m + 1))
+	{
+		i = m + 1;
+		j = n - m;
+	}
+	else {
+		i = n - m + 1;
+		j = m;
+	}
 
-		numerator = Combinatorics_factorial(n, i);
-		denominator = Combinatorics_factorial(j, 1);
+	numerator = Combinatorics_factorial(n, i);
+	denominator = Combinatorics_factorial(j, 1);
 
-		if ((denominator <= 0) || (numerator <= 0)) {
-			printf("| Too big number!\n| ");
-			sign = Combinatorics_choice();
-		}
-	} while (sign != 0);
 	prt_ln();
-	printf("| The number of combinations without repetitions of %d on %d is %lli \n", n, m, numerator / denominator);
-    	prt_ln();
+	std::cout << "| The number of combinations without repetitions of" << n << " on " << m << " is " << numerator / denominator;
+	printf("\n");
+    prt_ln();
 }
 
 void Permutations_without_repetitions()
 {
 	int n, sign=0;
-	unsigned long long int P_n;
+	Bigint P_n;
 	
-	do{
-		do {
+	do {
 		printf("| Enter the number of elements in the set.  n = ");
 		scanf("%d", &n);
 	} while (n < 0);
 
 	P_n = Combinatorics_factorial(n, 1);
 	
-	if (P_n <= 0) {
-		printf("| Too big number!\n| ");
-		sign = Combinatorics_choice();
-	}
-} while (sign != 0);
 	prt_ln();
-	printf("| The number of permutations of %d is %lli \n", n, P_n);
-    	prt_ln();
+	std::cout << "| The number of permutations of" << n << " is " << P_n;
+	printf("\n");
+    prt_ln();
 }
 
 void Permutations_with_repetitions()
 {
 	int j, long_n=0, sign=0, n[100];
-	unsigned long long int P_n;
-	do{
+	Bigint P_n, n_0;
+	
 	printf("| Enter the composition of the permutation with repetitions. To finish typing, enter 0 \n");
 	for (j = 0; j < 100; j++)
 	{
@@ -202,16 +180,12 @@ void Permutations_with_repetitions()
 	
 	for (int k = 0; k < j; k++)
 	{
-		n[k] = Combinatorics_factorial(n[k], 1);
-		P_n /= n[k];
+		n_0 = Combinatorics_factorial(n[k], 1);
+		P_n = P_n / n_0;
 	}
 
-	if (P_n <= 0) {
-		printf("| Too big number!\n| ");
-		sign = Combinatorics_choice();
-	}
-	} while (sign != 0);
-		prt_ln();
-		printf("| The number of permutations is %lli \n", P_n);
+	prt_ln();
+	std::cout << "| The number of permutations is" << P_n;
+	printf("\n");
     prt_ln();
 }
