@@ -1,6 +1,6 @@
-/*
-ProCalc — powerful multifunctional calculator
-Copyright © 2019 Tushino Software LLC
+ï»¿/*
+ProCalc â€” powerful multifunctional calculator
+Copyright Â© 2019 Tushino Software LLC
 
 This file is part of ProCalc.
 
@@ -27,7 +27,7 @@ int fraction_menu(void) {
 
     /* I/O flow */
     while (1) {
-        printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
+        printf(" â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“\n"
 "|                                                            |\n"
 "|                   >> Common fraction <<                    |\n"
 "|                                                            |\n"
