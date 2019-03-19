@@ -25,6 +25,11 @@ int main(int argc, const char *argv[]) {
     /* Initializing variables */
     int func;
 
+    /* Locale problems */
+#ifdef _WIN32
+    system("chcp 65001 > nul");
+#endif
+
     /* Main part */
     do {
         func = main_menu();
