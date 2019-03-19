@@ -1,7 +1,7 @@
 # ProCalc 
 ## A free powerful professional multifunctional calculator
 
-## Brief description
+## Brief usage description
 ### Usage:
 	• Choose on of the sub-calculators to perform tasks:
  	• • Matrix calculator
@@ -17,7 +17,8 @@
 	• Enjoy! :)
 
 ## Installation guide
-To install this program you need `libm.so` and `libSDL2.so` dynamic libraries.
+### General stuff
+To install this program you need `libm.so` and `libSDL2.so` (see `Installation notes`) dynamic libraries.
 Then perform: 
 ```bash
 sh ./autogen.sh
@@ -25,6 +26,9 @@ sh ./autogen.sh
 make
 sudo make install
 ```
+
+### Installation notes
+You can build ProCalc without SDL (SDL2), but it will have limited functionality. If you are sure, that you have `libSDL2.so` installed on your system, you can specify its path via `LDFLAGS`. For that, instead of `./configure` run `./configure LDFLAGS = -L/path/to/SDL2/lib`
 
 ## Licence
 It distributes only under GPLv2 licence. Go to https://www.gnu.org/licenses/ for more information

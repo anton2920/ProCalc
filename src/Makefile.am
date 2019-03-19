@@ -7,7 +7,7 @@ ProCalc_SOURCES = main.cpp
 ProCalc_LDADD = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la
 ProCalc_LDFLAGS =
 
-include_HEADERS = headers/*
+include_HEADERS = headers/header.h
 
 lib_LTLIBRARIES = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la
 
