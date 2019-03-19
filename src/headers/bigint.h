@@ -1,9 +1,7 @@
 #ifndef DODECAHEDRON_BIGINT_H_
 #define DODECAHEDRON_BIGINT_H_
 
-#include <vector>
-#include <iostream>
-#include <map>
+#include "header.h"
 
 namespace Dodecahedron
 {
@@ -40,7 +38,13 @@ public:
     Bigint &operator*=(int const &);
 
     //Division
-    std::vector<Bigint> operator/(Bigint q);
+    bool is_even();
+private:
+    std::vector<Bigint> divide(Bigint q);   // returns quotient(index[0]) and remainder(index[1]).
+public:
+    Bigint operator/(Bigint q); // interface for divide() function.
+    Bigint operator%(Bigint q);
+
 
     //Compare
     bool operator<(const Bigint &) const;
@@ -70,6 +74,7 @@ public:
     //Trivia
     int digits() const;
     int trailing_zeros() const;
+
 private:
     int segment_length(int) const;
     Bigint pow(int const &, std::map<int, Bigint> &);

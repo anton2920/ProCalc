@@ -34,12 +34,31 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #if (HAVE_IOSTREAM == 1)
 	#include <iostream>
 #endif
+#if (HAVE_MAP == 1)
+    #include <map>
+#endif
+#if (HAVE_STDLIB_H == 1)
+    #include <stdlib.h>
+#endif
+#if (HAVE_EXCEPTION == 1)
+    #include <exception>
+#endif
+#if (HAVE_STRING == 1)
+    #include <string>
+#endif
+#if (HAVE_VECTOR == 1)
+    #include <vector>
+#endif
+#if (HAVE_SSTREAM == 1)
+    #include <sstream>
+#endif
+
 #if (HAVE_SDL2_SDL_H == 1)
-	#include <SDL2/SDL.h>
+    #include <SDL2/SDL.h>
 #elif (HAVE_SDL_H == 1)
-	#include <SDL.h>
+    #include <SDL.h>
 #elif (HAVE_SDL_SDL_H == 1)
-	#include <SDL/SDL.h>
+    #include <SDL/SDL.h>
 #endif
 
 /* Including local headers */

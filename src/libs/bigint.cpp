@@ -1,6 +1,3 @@
-#include <string>
-#include <sstream>
-#include <map>
 #include "../headers/header.h"
 
 namespace Dodecahedron
@@ -76,9 +73,9 @@ Bigint &Bigint::operator+=(Bigint const &b)
         return *this -= b;
     }
     std::vector<int>::iterator
-        it1 = number.begin();
+            it1 = number.begin();
     std::vector<int>::const_iterator
-        it2 = b.number.begin();
+            it2 = b.number.begin();
     int sum = 0;
     while (it1 != number.end() || it2 != b.number.end()) {
         if (it1 != number.end()) {
@@ -145,9 +142,9 @@ Bigint Bigint::operator-(Bigint const &b) const
 Bigint &Bigint::operator-=(Bigint const &b)
 {
     std::vector<int>::iterator
-        it1 = number.begin();
+            it1 = number.begin();
     std::vector<int>::const_iterator
-        it2 = b.number.begin();
+            it2 = b.number.begin();
     int dif = 0;
     while (it1 != number.end() || it2 != b.number.end()) {
         if (it1 != number.end()) {
@@ -229,6 +226,26 @@ Bigint &Bigint::operator*=(int const &b)
     return *this;
 }
 
+bool Bigint::is_even(){
+    if(number.size()==1){
+        int x = number[0];
+        if(x%2 == 0)
+            return true;
+        else
+            return false;
+    }
+
+    else if(number.size()>1){
+        int x = *(number.begin());
+        if(x%2 == 0)
+            return true;
+        else
+            return false;
+    }
+
+}
+
+
 Bigint Bigint::sub_number(Bigint &p, Bigint &q){
 
     std::string tmpx0, tmpx1, tmpx3;
@@ -291,7 +308,8 @@ Bigint Bigint::sub_number(Bigint &p, Bigint &q){
 }
 
 //Division
-std::vector<Bigint> Bigint::operator/(Bigint q){
+
+std::vector<Bigint> Bigint::divide(Bigint q){
 
     /*Algorithm used is "Double division algorithm"*/
 
@@ -302,10 +320,24 @@ std::vector<Bigint> Bigint::operator/(Bigint q){
     bool done_flag=false ;
     Bigint tmp_quotient, sum_quotient, tmpx1, tmpx2;
 
+    Bigint zero("0");
+
+    if(q==zero || q == 0){
+        throw "Dividing by zero!";
+    }
+
+    bool this_sign = this -> positive;
+    bool q_sign = q.positive;
+
+    p.positive = true;
+    q.positive = true;
+
+
     look_up[0]=q;
     look_up[1]=q*2;
     look_up[2]=q*4;
     look_up[3]=q*8;
+
 
     while(true){
 
@@ -351,10 +383,46 @@ std::vector<Bigint> Bigint::operator/(Bigint q){
         p=p-tmpx1;
 
     }
+
+    if(this_sign == false && q_sign == false){
+        answer[0].positive = true;
+    }
+
+    else if(this_sign == false || q_sign == false){
+        answer[0].positive = false;
+    }
+
+    else{
+        answer[0].positive = true;
+    }
+
     return answer;
+
 }
 
-    //Power
+Bigint Bigint::operator/(Bigint q){
+    try{
+        vector <Dodecahedron::Bigint> c = divide(q);
+        return c[0];
+    }
+    catch(const char* msg){
+        std::cerr << msg << std::endl;
+        std::terminate();
+    }
+}
+
+Bigint Bigint::operator%(Bigint q){
+    try{
+        vector <Dodecahedron::Bigint> c = divide(q);
+        return c[1];
+    }
+    catch(const char* msg){
+        std::cerr << msg << std::endl;
+        std::terminate();
+    }
+}
+
+//Power
 Bigint Bigint::pow(int const &power, std::map<int, Bigint> &lookup)
 {
     if (power == 1) return *this;

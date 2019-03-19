@@ -10,11 +10,17 @@
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #define HAVE_DLFCN_H 1
 
+/* Define to 1 if you have the <exception> header file. */
+#define HAVE_EXCEPTION 1
+
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the <iostream> header file. */
 #define HAVE_IOSTREAM 1
+
+/* Define to 1 if you have the <map> header file. */
+#define HAVE_MAP 1
 
 /* Define to 1 if you have the <memory.h> header file. */
 #define HAVE_MEMORY_H 1
@@ -27,6 +33,9 @@
 
 /* Define to 1 if you have the <SDL/SDL.h> header file. */
 /* #undef HAVE_SDL_SDL_H */
+
+/* Define to 1 if you have the <sstream> header file. */
+#define HAVE_SSTREAM 1
 
 /* Define to 1 if stdbool.h conforms to C99. */
 #define HAVE_STDBOOL_H 1
@@ -55,10 +64,14 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #define HAVE_UNISTD_H 1
 
+/* Define to 1 if you have the <vector> header file. */
+#define HAVE_VECTOR 1
+
 /* Define to 1 if the system has the type `_Bool'. */
 /* #undef HAVE__BOOL */
 
-/* Define to the sub-directory where libtool stores uninstalled libraries. */
+/* Define to the sub-directory in which libtool stores uninstalled libraries.
+   */
 #define LT_OBJDIR ".libs/"
 
 /* Name of package */
