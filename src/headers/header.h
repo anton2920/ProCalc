@@ -31,9 +31,6 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #if (HAVE_CSTDIO == 1)
 	#include <cstdio>
 #endif
-#if (HAVE_CMATH == 1)
-	#include <cmath>
-#endif
 #if (HAVE_IOSTREAM == 1)
 	#include <iostream>
 #endif
