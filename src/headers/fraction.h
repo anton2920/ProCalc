@@ -26,11 +26,10 @@ struct Number{
 	int chis;
 	int znam;
 };
-void menu_calk_drob();
 void sravn(Number numb1, Number numb2); // comparison of 2 fractions
 void read(Number *numb);//read fracion
-int nod(struct Number,struct Number);//NOD
-int nok(int,int,int);//NOK
+int nod(int,int);//NOD
+int nok(int,int);//NOK
 void add(Number *numb1,Number *numb2,Number *numb3);//addition 2 fractions
 void vich(Number *numb1,Number *numb2,Number *numb3);// subtraction
 void del(Number *numb1,Number *numb2,Number *numb3);//division

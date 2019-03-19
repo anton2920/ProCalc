@@ -20,7 +20,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 
 #include "../headers/header.h"
 
-int Combinatorics_menu(void) {
+int fraction_menu(void) {
 
     /* Initializing variables */
     int func, junk, n = 0;
@@ -54,41 +54,40 @@ int Combinatorics_menu(void) {
                 no_cmd();
                 continue;
             }
-	    if (func<8){
-	    	struct Number fr1,fr2,fr3;
-		read(&fr1);
-		if (func<6){
-			read(&fr2);
-		}
-	    }
-            switch (func) {
-		case 1:
-			add(&fr1,&fr2,&fr3);
-			break;
-		case 2:
-			vich(&fr1,&fr2,&fr3);
-			break;
-		case 3:
-			ymn(&fr1,&fr2,&fr3);
-			break;
-		case 4:
-			del(&fr1,&fr2,&fr3);
-			break;
-		case 5:
-			sravn(n,m);
-			break;
-		case 6:
-			fr1.base+=videl(fr1.chis,fr1.znam);
-			write(fr1);
-			break;
-		case 7:
-			fr3=fr1;
-			base10(fr3);
-			break;
-                default:
-                    break;
-            }
-
+			if (func < 8) {
+				struct Number fr1, fr2, fr3;
+				read(&fr1);
+				if (func < 6) {
+					read(&fr2);
+				}
+				switch (func) {
+				case 1:
+					add(&fr1, &fr2, &fr3);
+					break;
+				case 2:
+					vich(&fr1, &fr2, &fr3);
+					break;
+				case 3:
+					ymn(&fr1, &fr2, &fr3);
+					break;
+				case 4:
+					del(&fr1, &fr2, &fr3);
+					break;
+				case 5:
+					sravn(fr1, fr2);
+					break;
+				case 6:
+					fr1.base += videl(fr1.chis, fr1.znam);
+					write(fr1);
+					break;
+				case 7:
+					fr3 = fr1;
+					base10(fr3);
+					break;
+				default:
+					break;
+				}
+			}
             if (!n) {
                 continue;
             } else if (n == -1) {
