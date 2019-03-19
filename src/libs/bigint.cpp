@@ -401,8 +401,9 @@ std::vector<Bigint> Bigint::divide(Bigint q){
 }
 
 Bigint Bigint::operator/(Bigint q){
+    std::vector <Dodecahedron::Bigint> c;
     try{
-        vector <Dodecahedron::Bigint> c = divide(q);
+        c = divide(q);
         return c[0];
     }
     catch(const char* msg){
@@ -412,8 +413,9 @@ Bigint Bigint::operator/(Bigint q){
 }
 
 Bigint Bigint::operator%(Bigint q){
+    std::vector <Dodecahedron::Bigint> c;
     try{
-        vector <Dodecahedron::Bigint> c = divide(q);
+        c = divide(q);
         return c[1];
     }
     catch(const char* msg){
