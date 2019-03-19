@@ -66,8 +66,11 @@ void substr_p(const double * P, const int P_deg, const double * Q, const int Q_d
 void substr_this( double * P, int P_deg, const double * Q, int Q_deg )
 {
     int max_deg = (P_deg > Q_deg) ? P_deg : Q_deg;
-    for (int i = 0; i <= max_deg; i++)
+    for (int i = 0; i <= max_deg; i++) {
         P[i] -= Q[i];
+        if ( abs(P[i]) < 1e-6 )
+            P[i] = 0;
+    }
 }
 
 void copy_p(double * to, const double * from)
@@ -102,19 +105,24 @@ int get_p( double * P )
 void show_p( const double * P, const int deg )
 {
     // вывести результат в виде многочлена
+    // сам уже не понимаю как это работает
     for(int i = deg; i >= 0; i-- ) {
-
-        if ( P[i] < 0 )
-            cout << "- " << -1.0 * P[i];
-        else if ( P[i] > 0 && i != deg ) // для первого слагаемого "+" выводить как-то некрасиво
-            cout << "+ " << P[i];
-        else if ( i == deg )
-            cout << P[i];
-        else if ( i != deg ) // тут коэф. равен 0, нифига не выводим
+        if ( P[i] == 0 )
             continue;
 
-        if (i != 0) // для свободного члена x^0 писать не надо
-            cout << "x^" << i << " ";
+        if ( P[i] < 0 )
+            cout << " - ";
+        else if ( i != deg )
+            cout << " + ";
+
+        if ( !(P[i] == 1 && i != 0)  )
+            cout << abs(P[i]);
+
+        if ( i != 0 )
+            cout << "x";
+
+        if ( i != 1 && i != 0 )
+            cout << "^" << i;
     }
     cout << endl;
 }

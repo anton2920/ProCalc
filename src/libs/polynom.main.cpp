@@ -30,7 +30,7 @@ int polynom_menu()
 
     int func, junk, n;
 
-    while (1) {
+    while (true) {
         printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
                "|                                                            |\n"
                "|                >> Polynomials calculator <<                |\n"
@@ -64,17 +64,16 @@ int polynom_menu()
                         double remain[MAX_DEG] = {0},
                                new_part[MAX_DEG] = {0},
                                multiplier[MAX_DEG] = {0};
+                        int remain_deg = -1;
 
-                        double P[MAX_DEG] = {-11, 2, 0, 4},
-                               Q[MAX_DEG] = {5, 1};
-    //                    P_deg = get_p(P);
-    //                    Q_deg = get_p(Q);
-                        P_deg = 3;
-                        Q_deg = 1;
+                        P_deg = get_p(P);
+                        Q_deg = get_p(Q);
+
                         // remain = P;
                         copy_p(remain, P);
 
-                        for (int i = P_deg; i >= Q_deg; i--) {
+                        for (int i = P_deg; i >= Q_deg; i--)
+                        {
                             R[i - Q_deg] = multiplier[i - Q_deg] = P[i] / Q[Q_deg];
                             mult_p(multiplier, i - Q_deg, Q, Q_deg, new_part);
                             substr_this(P, P_deg, new_part, MAX_DEG-1);
@@ -84,16 +83,20 @@ int polynom_menu()
 
                             zero_p(multiplier);
                             zero_p(new_part);
-
                         }
 
+                        for(int i = 0; i < MAX_DEG; i++)
+                            if (remain[i] != 0)
+                                remain_deg = i;
 
                         cout << "\n======== RESULT: ========\n" <<
                                 "=== Division result:  ===\n";
                         show_p( R, P_deg - Q_deg );
                         cout << "====== Remainder:  ======\n";
-                        show_p( remain, 10 ); // deg - ???
-
+                        if (remain_deg == -1)
+                            cout << 0 << endl;
+                        else
+                            show_p( remain, remain_deg );
                 }
                 break;
 
