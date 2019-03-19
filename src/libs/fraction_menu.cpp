@@ -29,20 +29,20 @@ int fraction_menu(void) {
     while (1) {
         printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
 "|                                                            |\n"
-"|                   >> Common fraction <<                    |\n"
+"|                 >> Fractions calculator <<                 |\n"
 "|                                                            |\n"
 "|  >> Choose a function:                                     |\n"
 "|                                                            |\n"
 "|       1) Addition                                          |\n"
-"|       2) Subtractions                                      |\n"
-"|       3) Multiplications                                   |\n"
+"|       2) Subtraction                                       |\n"
+"|       3) Multiplication                                    |\n"
 "|       4) Division                                          |\n"
 "|       5) Comparison                                        |\n"
 "|       6) Reduction                                         |\n"
 "|       7) decimal fraction                                  |\n"
 "|                                                            |\n"
-"|       >> Type \"back\" to go to the previous menu <<       |\n"
-"|       >> Type \"quit\" to terminate this program <<        |\n"
+"|       >> Type \"back\" to go to the previous menu <<         |\n"
+"|       >> Type \"quit\" to terminate this program <<          |\n"
 "|                                                            |\n");
         printf("| Answer: ");
         func = getchar();
@@ -88,13 +88,10 @@ int fraction_menu(void) {
 					break;
 				}
 			}
-            if (!n) {
-                continue;
-            } else if (n == -1) {
-                return -1;
-            } else {
-                return 1;
-            }
+            while ((junk = getchar()) != '\n')
+                ;
+
+            return 1;
 
         } else if (func == 'q') {
             if (quit_m()) {
@@ -110,7 +107,10 @@ int fraction_menu(void) {
             }
         } else {
             no_cmd();
-            while ((junk = getchar()) != '\n');
+            if (func != '\n') {
+                while ((junk = getchar()) != '\n')
+                    ;
+            }
             continue;
         }
     }

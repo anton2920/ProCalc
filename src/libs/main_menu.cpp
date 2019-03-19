@@ -132,20 +132,20 @@ int main_menu(void) {
     /* I/O flow */
     while (1) {
         printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
-                       "|                                                            |\n"
-                       "|                     >> ProCalc v1.0 <<                     |\n"
-                       "|                                                            |\n"
-                       "|  >> Choose a type of a calculator:                         |\n"
-                       "|                                                            |\n"
-                       "|       1) Matrix calculator                                 |\n"
-                       "|       2) Fractions calculator                              |\n"
-                       "|       3) Combinatorial stuff calculator                    |\n"
-                       "|       4) Polynomials calculator                            |\n"
-                       "|       5) Probability and statistics                        |\n"
-                       "|       6) Functions stuff                                   |\n"
-                       "|                                                            |\n"
-                       "|       >> Type \"quit\" to terminate this program <<          |\n"
-                       "|                                                            |\n");
+"|                                                            |\n"
+"|                     >> ProCalc v1.0 <<                     |\n"
+"|                                                            |\n"
+"|  >> Choose a type of a calculator:                         |\n"
+"|                                                            |\n"
+"|       1) Matrix calculator                                 |\n"
+"|       2) Fractions calculator                              |\n"
+"|       3) Combinatorial stuff calculator                    |\n"
+"|       4) Polynomials calculator                            |\n"
+"|       5) Probability and statistics                        |\n"
+"|       6) Functions stuff                                   |\n"
+"|                                                            |\n"
+"|       >> Type \"quit\" to terminate this program <<          |\n"
+"|                                                            |\n");
         printf("| Answer: ");
         func = getchar();
         prt_ln();
@@ -162,6 +162,7 @@ int main_menu(void) {
                 case 1:
                     break;
                 case 2:
+                    n = fraction_menu();
                     break;
                 case 3:
                     n = Combinatorics_menu();
@@ -194,8 +195,10 @@ int main_menu(void) {
             }
         } else {
             no_cmd();
-            while ((junk = getchar()) != '\n')
-                ;
+            if (func != '\n') {
+                while ((junk = getchar()) != '\n')
+                    ;
+            }
             continue;
         }
     }

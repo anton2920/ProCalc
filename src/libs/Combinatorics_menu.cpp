@@ -87,7 +87,10 @@ int Combinatorics_menu(void) {
             }
         } else {
             no_cmd();
-            while ((junk = getchar()) != '\n');
+            if (func != '\n') {
+                while ((junk = getchar()) != '\n')
+                    ;
+            }
             continue;
         }
     }

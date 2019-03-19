@@ -148,9 +148,10 @@ int polynom_menu()
             zero_p( Q );
 
 
-            if (!n) {
-                func = 'b';
-            }
+            while ((junk = getchar()) != '\n')
+                ;
+
+            return 1;
 
         } else if (func == 'q') {
             if (quit_m()) {
@@ -166,8 +167,10 @@ int polynom_menu()
             }
         } else {
             no_cmd();
-            while ((junk = getchar()) != '\n')
-                ;
+            if (func != '\n') {
+                while ((junk = getchar()) != '\n')
+                    ;
+            }
             continue;
         }
     }
