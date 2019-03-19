@@ -20,7 +20,7 @@
 #define HAVE_MEMORY_H 1
 
 /* Define to 1 if you have the <SDL2/SDL.h> header file. */
-#define HAVE_SDL2_SDL_H 1
+#define HAVE_SDL2_SDL_H 0
 
 /* Define to 1 if you have the <SDL.h> header file. */
 /* #undef HAVE_SDL_H */
