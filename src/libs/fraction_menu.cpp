@@ -20,7 +20,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 
 #include "../headers/header.h"
 
-int fraction_menu(void) {
+int Combinatorics_menu(void) {
 
     /* Initializing variables */
     int func, junk, n = 0;
@@ -55,10 +55,10 @@ int fraction_menu(void) {
                 continue;
             }
 	    if (func<8){
-	    struct Number fr1,fr2,fr3;
-		read(&n);
+	    	struct Number fr1,fr2,fr3;
+		read(&fr1);
 		if (func<6){
-			read(&m);
+			read(&fr2);
 		}
 	    }
             switch (func) {
