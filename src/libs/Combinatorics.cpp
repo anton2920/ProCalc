@@ -147,7 +147,7 @@ void Permutations_without_repetitions()
 
 void Permutations_with_repetitions()
 {
-	int j, long_n=0, n[100];
+	int j, long_n = 0, n[100];
 	Bigint P_n, n_0 = 1;
 	
 	printf("| Enter the composition of the permutation with repetitions (type \"0\" to finish):  \n");

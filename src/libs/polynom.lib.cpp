@@ -91,13 +91,27 @@ int get_p( double * P )
     int deg;
 
     do {
-        cout << "\nInsert polynom degree\n\nFor example:\nIf P(x) = 1*x^5 + 6*x^3 - 2*x^2 + 5*x - 13\nthen degree = 5\n";
+        printf("| Insert polynomial degree                                   |\n");
+        prt_ln();
+        printf("| For example:                                               |\n"
+"| If P(x) = 1*x^5 + 6*x^3 - 2*x^2 + 5*x - 13                 |\n"
+"| then degree = 5                                            |\n");
+        prt_ln();
+        cout << "| Answer: ";
         cin >> deg;
+        prt_ln();
     } while( deg <= 0 || deg >= MAX_DEG );
 
-    cout << "Insert polynom coefficients\n\nFor example:\nIf P(x) = 1*x^5 + 6*x^3 - 2*x^2 + 5*x - 13\nthen coefficients is = -13 5 -2 6 0 1 \n";
-    for (int i = 0; i <= deg; i++)
+    printf("| Insert polynomial coefficients                             |\n");
+    prt_ln();
+    printf("| For example:                                               |\n"
+"| If P(x) = 1*x^5 + 6*x^3 - 2*x^2 + 5*x - 13                 |\n"
+"| then coefficients is = -13 5 -2 6 0 1                      |\n");
+    prt_ln();
+    for (int i = 0; i <= deg; i++) {
         cin >> P[i];
+    }
+    prt_ln();
 
     return deg;
 }
