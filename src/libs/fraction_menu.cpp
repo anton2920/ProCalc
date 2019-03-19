@@ -55,7 +55,7 @@ int Combinatorics_menu(void) {
                 continue;
             }
 	    if (func<8){
-	    struct Number n,m,k;
+	    struct Number fr1,fr2,fr3;
 		read(&n);
 		if (func<6){
 			read(&m);
@@ -63,27 +63,27 @@ int Combinatorics_menu(void) {
 	    }
             switch (func) {
 		case 1:
-			add(&n,&m,&k);
+			add(&fr1,&fr2,&fr3);
 			break;
 		case 2:
-			vich(&n,&m,&k);
+			vich(&fr1,&fr2,&fr3);
 			break;
 		case 3:
-			ymn(&n,&m,&k);
+			ymn(&fr1,&fr2,&fr3);
 			break;
 		case 4:
-			del(&n,&m,&k);
+			del(&fr1,&fr2,&fr3);
 			break;
 		case 5:
 			sravn(n,m);
 			break;
 		case 6:
-			n.base+=videl(n.chis,n.znam);
-			write(n);
+			fr1.base+=videl(fr1.chis,fr1.znam);
+			write(fr1);
 			break;
 		case 7:
-			k=n;
-			base10(k);
+			fr3=fr1;
+			base10(fr3);
 			break;
                 default:
                     break;

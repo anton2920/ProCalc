@@ -1,3 +1,23 @@
+/*
+ProCalc Ч powerful multifunctional calculator
+Copyright © 2019 Tushino Software LLC
+
+This file is part of ProCalc.
+
+ProCalc is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+ProCalc is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
+*/
+
 #include "../headers/header.h"
 void base10(Number numb){
 	std::cout<<numb.base+double(numb.chis)/numb.znam;
@@ -69,10 +89,10 @@ void del(Number *numb1,Number *numb2,Number *numb3){
 	numb2->chis=numb2->znam;
 	numb2->znam=x;
 	if (numb2->znam==0){
-		std::cout<<"I can not div by 0"; //попытка делени€ на ноль
+		std::cout<<"I can not div by 0"; //you can div by 0
 	}
 	else{
-		ymn(numb1,numb2,numb3);//деление заменили на умножение на обратную дробь
+		ymn(numb1,numb2,numb3);//div by multi
 	}
 }
 void ymn(Number *numb1,Number *numb2,Number *numb3){
