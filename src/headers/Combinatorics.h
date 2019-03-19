@@ -20,13 +20,12 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 
 #ifndef Combinatorics_h
 #define Combinatorics_h
-#include"bigint.h"
 
-using namespace Dodecahedron;
+#include "bigint.h"
 
 /* Combinatorics.cpp */
-Bigint Combinatorics_factorial(int limit, int min);
-void Combinatorics_read_n_m(int *p_n, int * p_m);
+Dodecahedron::Bigint lfact(int, int);
+void Combinatorics_read_n_m(int *, int *);
 void Placements_with_repetitions();
 void Placements_without_repetitions();
 void Combinations_with_repetitions();
