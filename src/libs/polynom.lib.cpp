@@ -19,14 +19,22 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include "../headers/header.h"
-#include "../headers/polynom.h"
-
 
 void mult_p(const double * P, const int P_deg, const double * Q, const int Q_deg, double * R )
 {
     for (int i = 0; i <= P_deg; i++)
         for (int j = 0; j <= Q_deg; j++)
             R[i + j] += P[i] * Q[j];
+}
+
+void mult_this(double * P, int P_deg, const double * Q, int Q_deg)
+{
+    double R[MAX_DEG] = {0};
+    for (int i = 0; i <= P_deg; i++)
+        for (int j = 0; j <= Q_deg; j++)
+            R[i + j] += P[i] * Q[j];
+
+    copy_p(P, R);
 }
 
 void mult_number(double *P, int P_deg, double *R, double n)
@@ -55,6 +63,19 @@ void substr_p(const double * P, const int P_deg, const double * Q, const int Q_d
         R[i] = P[i] - Q[i];
 }
 
+void substr_this( double * P, int P_deg, const double * Q, int Q_deg )
+{
+    int max_deg = (P_deg > Q_deg) ? P_deg : Q_deg;
+    for (int i = 0; i <= max_deg; i++)
+        P[i] -= Q[i];
+}
+
+void copy_p(double * to, const double * from)
+{
+    for(int i = 0; i < MAX_DEG; i++)
+        to[i] = from[i];
+}
+
 void zero_p(double * P)
 {
     for(int i = 0; i < MAX_DEG; i++)
@@ -74,12 +95,13 @@ int get_p( double * P )
     cout << "Insert polynom coefficients\n\nFor example:\nIf P(x) = 1*x^5 + 6*x^3 - 2*x^2 + 5*x - 13\nthen coefficients is = -13 5 -2 6 0 1 \n";
     for (int i = 0; i <= deg; i++)
         cin >> P[i];
+
+    return deg;
 }
 
 void show_p( const double * P, const int deg )
 {
     // вывести результат в виде многочлена
-    cout << "\n=== RESULT: ===\n";
     for(int i = deg; i >= 0; i-- ) {
 
         if ( P[i] < 0 )

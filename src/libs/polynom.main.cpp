@@ -19,7 +19,6 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include "../headers/header.h"
-#include "../headers/polynom.h"
 
 int polynom_menu()
 {
@@ -28,7 +27,6 @@ int polynom_menu()
             R[MAX_DEG] = {0};
     int P_deg, Q_deg, R_deg = 0;
     double coef = 0.0;
-    char test;
 
     int func, junk, n;
 
@@ -61,27 +59,67 @@ int polynom_menu()
                 continue;
             }
 
-            switch (func) {
-                case 1:
-                    // nothing here so far
-                    break;
+            switch (1) {
+                case 1: {
+                        double remain[MAX_DEG] = {0},
+                               new_part[MAX_DEG] = {0},
+                               multiplier[MAX_DEG] = {0};
+
+                        double P[MAX_DEG] = {-11, 2, 0, 4},
+                               Q[MAX_DEG] = {5, 1};
+    //                    P_deg = get_p(P);
+    //                    Q_deg = get_p(Q);
+                        P_deg = 3;
+                        Q_deg = 1;
+                        // remain = P;
+                        copy_p(remain, P);
+
+                        for (int i = P_deg; i >= Q_deg; i--) {
+                            R[i - Q_deg] = multiplier[i - Q_deg] = P[i] / Q[Q_deg];
+                            mult_p(multiplier, i - Q_deg, Q, Q_deg, new_part);
+                            substr_this(P, P_deg, new_part, MAX_DEG-1);
+
+                            if ( i == Q_deg )
+                                copy_p(remain, P);
+
+                            zero_p(multiplier);
+                            zero_p(new_part);
+
+                        }
+
+
+                        cout << "\n======== RESULT: ========\n" <<
+                                "=== Division result:  ===\n";
+                        show_p( R, P_deg - Q_deg );
+                        cout << "====== Remainder:  ======\n";
+                        show_p( remain, 10 ); // deg - ???
+
+                }
+                break;
+
                 case 2:
                     P_deg = get_p( P );
                     Q_deg = get_p( Q );
                     R_deg = (P_deg > Q_deg) ? P_deg : Q_deg;
                     add_p( P, P_deg, Q, Q_deg, R );
+                    cout << "\n=== RESULT: ===\n";
+                    show_p( R, R_deg );
                     break;
                 case 3:
                     P_deg = get_p( P );
                     Q_deg = get_p( Q );
                     R_deg = (P_deg > Q_deg) ? P_deg : Q_deg;
                     substr_p( P, P_deg, Q, Q_deg, R );
+                    cout << "\n=== RESULT: ===\n";
+                    show_p( R, R_deg );
                     break;
                 case 4:
                     P_deg = get_p( P );
                     Q_deg = get_p( Q );
                     R_deg = P_deg * Q_deg;
                     mult_p( P, P_deg, Q, Q_deg, R );
+                    cout << "\n=== RESULT: ===\n";
+                    show_p( R, R_deg );
                     break;
                 case 5:
                     P_deg = get_p( P );
@@ -89,17 +127,20 @@ int polynom_menu()
                     cin >> coef;
                     R_deg = P_deg;
                     mult_number(P, P_deg, R, coef);
+                    cout << "\n=== RESULT: ===\n";
+                    show_p( R, R_deg );
                     break;
                 case 6:
                     P_deg = get_p( P );
                     R_deg = P_deg - 1;
                     derivative_p(P, P_deg, R, R_deg);
+                    cout << "\n=== RESULT: ===\n";
+                    show_p( R, R_deg );
                     break;
                 default:
                     break;
             }
 
-            show_p( R, R_deg );
             zero_p( P );
             zero_p( Q );
 
