@@ -23,7 +23,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 int fraction_menu(void) {
 
     /* Initializing variables */
-    int func, junk, n = 0;
+    int func, junk;
 
     /* I/O flow */
     while (1) {
@@ -88,6 +88,8 @@ int fraction_menu(void) {
 					break;
 				}
 			}
+            prt_ln();
+
             while ((junk = getchar()) != '\n')
                 ;
 

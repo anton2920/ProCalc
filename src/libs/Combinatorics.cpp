@@ -178,6 +178,6 @@ void Permutations_with_repetitions()
     P_n = P_n / n_0;
 
 	prt_ln();
-	std::cout << "| The number of permutations whith repetitions is " << P_n << "\n";
+	std::cout << "| The number of permutations with repetitions is " << P_n << "\n";
     prt_ln();
 }
