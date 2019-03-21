@@ -52,9 +52,10 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 
  void mat_mult(double **matr, int n, int m) //matrix mult on number
 {
-    int i, j, p;
+    int i, j;
+    double p;
     printf("Enter the number\n");
-    scanf("%d", &p);
+    scanf("%lf", &p);
 
     for(i = 0; i < n; i++)
     {
@@ -117,12 +118,12 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 
  void mats_mult(double **matr1, double **matr2, double **matr3, int n, int m, int n1, int m1)//matrix * matrix
 {
-    for(int i = 0; i < n1; i++)
+    for(int i = 0; i < n; i++)
     {
-        for(int j = 0; j < m; j++)
+        for(int j = 0; j < m1; j++)
         {
             matr3[i][j] = 0;
-            for(int k = 0; k < n; k++)
+            for(int k = 0; k < m; k++)
                 matr3[i][j] += matr1[i][k] * matr2[k][j];
         }
     }

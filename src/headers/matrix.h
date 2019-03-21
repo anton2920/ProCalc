@@ -35,7 +35,7 @@ void mats_minus(double **matr, double **matr2, int n, int m);
 void mats_mult(double **matr1, double **matr2, double **matr3, int n, int m, int n1, int m1);
 void Get_matr(double **matr, int n, double **temp_matr, int indRow, int indCol);
 double Det(double **matr, int n);
-int matrix_main();
+int matrix_menu();
 
 
 

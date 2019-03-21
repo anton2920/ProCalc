@@ -160,6 +160,7 @@ int main_menu(void) {
 
             switch (func) {
                 case 1:
+                    n = matrix_menu();
                     break;
                 case 2:
                     n = fraction_menu();
