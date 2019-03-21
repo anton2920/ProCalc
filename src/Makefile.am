@@ -8,7 +8,7 @@ ProCalc_CPPFLAGS = $(CPPFLAGS) -Wall -Wextra -std=c++11
 ProCalc_LDADD = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la libfraction.la libmatrix.la libfuncs.la
 ProCalc_LDFLAGS =
 
-include_HEADERS = headers/header.h headers/config.h headers/fraction.h headers/Combinatorics.h headers/polynom.h headers/TeoriaVer.h headers/bigint.h headers/matrix.h headers/derivative.h headers/func_menu.h headers/graph.h headers/input.h headers/integral.h headers/root.h
+include_HEADERS = headers/header.h headers/config.h headers/fraction.h headers/Combinatorics.h headers/polynom.h headers/TeoriaVer.h headers/bigint.h headers/matrix.h headers/func_menu.h headers/graph.h headers/input.h headers/integral.h headers/root.h
 
 lib_LTLIBRARIES = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la libfraction.la libmatrix.la libfuncs.la
 

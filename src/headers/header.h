@@ -71,7 +71,7 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #include "TeoriaVer.h"
 #include "bigint.h"
 #include "matrix.h"
-#include "derivative.h"
+#include "func_menu.h"
 #include "graph.h"
 #include "input.h"
 #include "integral.h"

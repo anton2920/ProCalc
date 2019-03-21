@@ -1,30 +1,32 @@
 #include "../headers/header.h"
 
-int choose_function(func& foo)
+int choose_function()
 {
 	/* Initializing variables */
 	int func, junk, n;
+	struct func foo;
 
 	/* I/O flow */
 	while (true) {
-		printf(" ������������������������������������������������������������\n"
-			"|                                                              |\n"
-			"|                      >> ProCalc <<                           |\n"
-			"|                                                              |\n"
-			"|  >> Choose a function:                                       |\n"
-			"|                                                              |\n"
-			"|       1) Sine												|\n"
-			"|       2) Cosine											    |\n"
-			"|       3) Exponential                                         |\n"
-			"|       4) Power                                               |\n"
-			"|       5) Logarithmic                                         |\n"
-			"|       6) Polynomial                                          |\n"
-			"|                                                              |\n"
-			"|       >> Type \"back\" to go to the previous menu <<         |\n"
-			"|       >> Type \"quit\" to terminate this program <<          |\n"
-			"|                                                              |\n");
+		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
+"|                                                            |\n"
+"|                    >> Functions stuff <<                   |\n"
+"|                                                            |\n"
+"|  >> Choose a function:                                     |\n"
+"|                                                            |\n"
+"|       1) Sine                                              |\n"
+"|       2) Cosine                                            |\n"
+"|       3) Exponential                                       |\n"
+"|       4) Power                                             |\n"
+"|       5) Logarithmic                                       |\n"
+"|       6) Polynomial                                        |\n"
+"|                                                            |\n"
+"|       >> Type \"back\" to go to the previous menu <<         |\n"
+"|       >> Type \"quit\" to terminate this program <<          |\n"
+"|                                                            |\n");
 		printf("| Answer: ");
 		func = getchar();
+        prt_ln();
 		if (isdigit(func) && func >= '1' && func <= '6') {
 			func -= '0';
 			if ((junk = getchar()) != '\n') {
@@ -56,12 +58,18 @@ int choose_function(func& foo)
 				break;
 			}
 
+            while ((junk = getchar()) != '\n')
+                ;
 
-			if (!n) {
-				func = 'b';
-			}
+            n = func_list(foo);
 
-
+            if (!n) {
+                continue;
+            } else if (n == -1) {
+                return -1;
+            } else {
+                return 1;
+            }
 
 		}
 		else if (func == 'q') {
@@ -95,20 +103,20 @@ int func_list(func& foo)
 
 	/* I/O flow */
 	while (true) {
-		printf(" ������������������������������������������������������������\n"
-			"|                                                              |\n"
-			"|                      >> ProCalc <<                           |\n"
-			"|                                                              |\n"
-			"|  >> Choose a function:                                       |\n"
-			"|                                                              |\n"
-			"|       1) Plot a graph										|\n"
-			"|       2) Approximately calculate the definite integral.     |\n"
-			"|       3) Find root  Y = 0                                    |\n"
-			"|       4) Find extreme points                                 |\n"
-			"|                                                              |\n"
-			"|       >> Type \"back\" to go to the previous menu <<         |\n"
-			"|       >> Type \"quit\" to terminate this program <<          |\n"
-			"|                                                              |\n");
+		printf(" ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––\n"
+"|                                                            |\n"
+"|                    >> Functions stuff <<                   |\n"
+"|                                                            |\n"
+"|  >> Choose a function:                                     |\n"
+"|                                                            |\n"
+"|       1) Plot a graph                                      |\n"
+"|       2) Approximately calculate the definite integral     |\n"
+"|       3) Find root (Y = 0)                                 |\n"
+"|       4) Find extreme points                               |\n"
+"|                                                            |\n"
+"|       >> Type \"back\" to go to the previous menu <<         |\n"
+"|       >> Type \"quit\" to terminate this program <<          |\n"
+"|                                                            |\n");
 		printf("| Answer: ");
 		func = getchar();
 		if (isdigit(func) && func >= '1' && func <= '6') {
@@ -121,59 +129,64 @@ int func_list(func& foo)
 
 			switch (func) {
 			case 1:
+            #if (HAVE_SDL2_SDL_H == 1 || HAVE_SDL_H == 1 || HAVE_SDL_SDL_H == 1)
+                {
+                    SDL_Window* window = nullptr;
+                    SDL_Renderer* renderer = nullptr;
 
-			{
-				SDL_Window* window = nullptr;
-				SDL_Renderer* renderer = nullptr;
+                    SDL_start(&window, &renderer);
 
-				SDL_start(&window, &renderer);
+                    bool close_requested = false;
+                    int x_pos = PC::window_height / 2, y_pos = PC::window_width / 2;
+                    union SDL_Event event;
 
-				bool close_requested = false;
-				int x_pos = PC::window_height / 2, y_pos = PC::window_width / 2;
-				SDL_Event event;
-				while (!close_requested)
-				{
-					while (SDL_PollEvent(&event))
-					{
-						if (event.type == SDL_QUIT)
-							close_requested = true;
-						else if (event.type == SDL_KEYDOWN)
-						{
-							if (event.key.keysym.sym == SDLK_LEFT)
-							{
-								y_pos += PC::size / 2;
-							}
-							else if (event.key.keysym.sym == SDLK_RIGHT)
-							{
-								y_pos -= PC::size / 2;
-							}
-							else if (event.key.keysym.sym == SDLK_UP)
-							{
-								x_pos += PC::size / 2;
-							}
-							else if (event.key.keysym.sym == SDLK_DOWN)
-							{
-								x_pos -= PC::size / 2;
-							}
-							else if (event.key.keysym.sym == SDLK_SPACE)
-							{
-								x_pos = PC::window_height / 2;
-								y_pos = PC::window_width / 2;
-							}
-						}
-					}
-					clear_window(renderer);
+                    while (!close_requested)
+                    {
+                        while (SDL_PollEvent(&event))
+                        {
+                            if (event.type == SDL_QUIT) {
+                                close_requested = true;
+                                break;
+                            } else if (event.type == SDL_KEYDOWN) {
+                                if (event.key.keysym.sym == SDLK_LEFT)
+                                {
+                                    y_pos += PC::size / 2;
+                                }
+                                else if (event.key.keysym.sym == SDLK_RIGHT)
+                                {
+                                    y_pos -= PC::size / 2;
+                                }
+                                else if (event.key.keysym.sym == SDLK_UP)
+                                {
+                                    x_pos += PC::size / 2;
+                                }
+                                else if (event.key.keysym.sym == SDLK_DOWN)
+                                {
+                                    x_pos -= PC::size / 2;
+                                }
+                                else if (event.key.keysym.sym == SDLK_SPACE)
+                                {
+                                    x_pos = PC::window_height / 2;
+                                    y_pos = PC::window_width / 2;
+                                }
+                            }
+                        }
+                        clear_window(renderer);
 
-					draw_grid(renderer);
-					draw_y_axis(renderer, y_pos);
-					draw_x_axis(renderer, x_pos);
-					plotGraph(renderer, foo, x_pos, y_pos);
-					SDL_RenderPresent(renderer);
+                        draw_grid(renderer);
+                        draw_y_axis(renderer, y_pos);
+                        draw_x_axis(renderer, x_pos);
+                        plotGraph(renderer, foo, x_pos, y_pos);
+                        SDL_RenderPresent(renderer);
 
-					SDL_Delay(4);
-				}
-			}
-			break;
+                        SDL_Delay(10);
+                    }
+                }
+            #else
+                std::cout << "| menu: you don't have SDL installed                         |\n"
+                prt_ln();
+            #endif
+			    break;
 			case 2:
 			{
 				double x_left, x_right;
@@ -186,7 +199,8 @@ int func_list(func& foo)
 
 				} while (x_left <= x_right);
 				std::cout << def_int(foo, x_left, x_right);
-				break; }
+				break;
+            }
 			case 3:
 			{
 				double x_left, x_right;
@@ -200,7 +214,8 @@ int func_list(func& foo)
 				} while (x_left <= x_right);
 
 				BisectionMethod(foo, x_left, x_right);
-				break; }
+				break;
+            }
 			case 4:
 			{
 				double x_left, x_right;
@@ -215,15 +230,14 @@ int func_list(func& foo)
 				extremum(foo, x_left, x_right);
 				break;
 			}
+            default:
+                break;
 			}
 
+            while ((junk = getchar()) != '\n')
+                ;
 
-
-			if (!n) {
-				func = 'b';
-			}
-
-
+            return 1;
 
 		}
 		else if (func == 'q') {

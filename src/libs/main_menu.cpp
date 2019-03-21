@@ -128,6 +128,7 @@ int main_menu(void) {
 
     /* Initializing variables */
     int func, junk, n = 0;
+    struct func func1;
 
     /* I/O flow */
     while (1) {
@@ -175,6 +176,7 @@ int main_menu(void) {
                     n = verdant_menu();
                     break;
                 case 6:
+                    n = choose_function();
                     break;
                 default:
                     break;

@@ -2,5 +2,6 @@
 
 #include "input.h"
 
+int choose_function();
 void func_helper(func&);
-int choose_function(func&);
+int func_list(func&);
