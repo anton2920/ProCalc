@@ -4,12 +4,12 @@ ACLOCAL_AMFLAGS = $(ACLOCAL_FLAGS)
 bin_PROGRAMS = ProCalc
 
 ProCalc_SOURCES = main.cpp
-ProCalc_LDADD = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la libfraction.la
+ProCalc_LDADD = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la libfraction.la libmatrix.la
 ProCalc_LDFLAGS =
 
 include_HEADERS = headers/header.h
 
-lib_LTLIBRARIES = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la libfraction.la
+lib_LTLIBRARIES = libmainmenu.la libpolynom.la libcombinatorics.la libbigint.la libterver.la libfraction.la libmatrix.la
 
 # libmainmenu.la
 libmainmenu_la_LDFLAGS = -version-info 0:0:0
@@ -34,3 +34,7 @@ libterver_la_SOURCES = libs/func.ter.ver.cpp libs/ter.ver.menu.cpp
 # libfraction.la
 libfraction_la_LDFLAGS = -version-info 0:0:0
 libfraction_la_SOURCES = libs/fraction.cpp libs/fraction_menu.cpp
+
+# libmatrix.la
+libmatrix_la_LDFLAGS = -version-info 0:0:0
+libmatrix_la_SOURCES = libs/matrix.cpp libs/matrix_main.cpp

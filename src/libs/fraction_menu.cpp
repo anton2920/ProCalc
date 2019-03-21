@@ -62,10 +62,34 @@ int fraction_menu(void) {
 				}
 				switch (func) {
 				case 1:
-					add(&fr1, &fr2, &fr3);
+					if (fr1.znak == fr2.znak) {
+						fr3.znak = fr1.znak;
+						add(&fr1, &fr2, &fr3);
+					}
+					else {
+						fr3.znak = true;
+						if (fr1.znak) {
+							vich(&fr2, &fr1, &fr3);
+						}
+						else {
+							vich(&fr1, &fr2, &fr3);
+						}
+						}
 					break;
 				case 2:
-					vich(&fr1, &fr2, &fr3);
+					if (fr1.znak == fr2.znak) {
+						if (!fr1.znak) { vich(&fr1, &fr2, &fr3); }
+						else { vich(&fr2, &fr1, &fr3); }
+					}
+					else {
+						if (fr2.znak) {
+							add(&fr1, &fr2, &fr3);
+						}
+						else {
+							fr3.znak = true;
+							add(&fr1, &fr2, &fr3);
+						}
+					}
 					break;
 				case 3:
 					ymn(&fr1, &fr2, &fr3);

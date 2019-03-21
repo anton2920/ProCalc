@@ -25,6 +25,7 @@ struct Number{
 	int base;
 	int chis;
 	int znam;
+	bool znak;
 };
 void sravn(Number numb1, Number numb2); // comparison of 2 fractions
 void read(Number *numb);//read fracion
