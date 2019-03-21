@@ -27,16 +27,6 @@ void mult_p(const double * P, const int P_deg, const double * Q, const int Q_deg
             R[i + j] += P[i] * Q[j];
 }
 
-void mult_this(double * P, int P_deg, const double * Q, int Q_deg)
-{
-    double R[MAX_DEG] = {0};
-    for (int i = 0; i <= P_deg; i++)
-        for (int j = 0; j <= Q_deg; j++)
-            R[i + j] += P[i] * Q[j];
-
-    copy_p(P, R);
-}
-
 void mult_number(double *P, int P_deg, double *R, double n)
 {
     for (int i = 0; i <= P_deg; i++)

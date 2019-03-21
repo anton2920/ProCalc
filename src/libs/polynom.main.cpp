@@ -122,7 +122,7 @@ int polynom_menu()
                 case 4:
                     P_deg = get_p( P );
                     Q_deg = get_p( Q );
-                    R_deg = P_deg * Q_deg;
+                    R_deg = P_deg + Q_deg;
                     mult_p( P, P_deg, Q, Q_deg, R );
                     cout << "| Answer: ";
                     show_p( R, R_deg );
