@@ -141,43 +141,47 @@ void Permutations_without_repetitions()
 	P_n = factorial(n);
 	
 	prt_ln();
-	std::cout << "| The number of permutations of" << n << " is " << P_n << "\n";
+	std::cout << "| The number of permutations of " << n << " is " << P_n << "\n";
     prt_ln();
 }
 
-void Permutations_with_repetitions()
+int Permutations_with_repetitions()
 {
-	int j, long_n = 0, n[100];
+	int j, long_n = 0, n[1000];
 	Bigint P_n, n_0 = 1;
 	
 	printf("| Enter the composition of the permutation with repetitions (type \"0\" to finish):  \n");
     prt_ln();
-	for (j = 0; j < 100; j++)
+	for (j = 0; j < 1000; j++)
 	{
         scanf("%d", &n[j]);
         if (n[j] == 0) {
             break;
         }
 
-        if ((n[j] < 0) || (n[j] > 100 - long_n)) {
-            printf("| Too big number! Type another number! \n");
+        if ((n[j] < 0) || (n[j] > 1000 - long_n)) {
+            printf("| Type another number! \n");
             j--;
             continue;
         } else {
             long_n += n[j];
         }
 	}
-
-	P_n = factorial(long_n);
-	
-	for (int k = 0; k < j; k++)
+	if (n[0] == 0) { return 1; }
+	else
 	{
-		n_0 *= factorial(n[k]);
+		P_n = factorial(long_n);
+
+		for (int k = 0; k < j; k++)
+		{
+			n_0 *= factorial(n[k]);
+		}
+
+		P_n = P_n / n_0;
+
+		prt_ln();
+		std::cout << "| The number of permutations with repetitions is " << P_n << "\n";
+		prt_ln();
+		return 0;
 	}
-
-    P_n = P_n / n_0;
-
-	prt_ln();
-	std::cout << "| The number of permutations with repetitions is " << P_n << "\n";
-    prt_ln();
 }
