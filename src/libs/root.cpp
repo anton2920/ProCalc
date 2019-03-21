@@ -1,4 +1,4 @@
-#include "root.h"
+#include "../headers/header.h"
 
 void BisectionMethod(func& foo, double x_left, double x_right)
 {

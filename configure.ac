@@ -58,7 +58,7 @@ AC_SEARCH_LIBS([printf], [c], [], [
 	AC_MSG_ERROR([unable to find c lib])
 	])
 
-AC_CHECK_HEADERS([cstdio cmath iostream string exception vector map stdlib.h sstream], [], [
+AC_CHECK_HEADERS([cstdio cmath iostream string exception vector map stdlib.h sstream cfloat], [], [
 	AC_MSG_ERROR([unable to find necessary headers])
 	])
 

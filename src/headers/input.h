@@ -1,12 +1,5 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <cmath>
-#include <iostream>
-#include <sstream>
-
-
 struct func
 {
 	/*

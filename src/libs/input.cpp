@@ -1,4 +1,4 @@
-#include "input.h"
+#include "../headers/header.h"
 
 double eval(func& foo, double coord_x)
 {

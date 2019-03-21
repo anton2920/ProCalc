@@ -1,4 +1,4 @@
-#include "graph.h"
+#include "../headers/header.h"
 
 bool SDL_start(SDL_Window** window, SDL_Renderer** renderer)
 {

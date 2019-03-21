@@ -1,8 +1,6 @@
 #pragma once
 
-#include "input.h"
-#include <SDL.h>
-#undef main
+#include "../headers/header.h"
 
 namespace PC
 {

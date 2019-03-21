@@ -1,7 +1,7 @@
 #pragma once
 
 #include "input.h"
-#include <vector>
+
 constexpr auto eps = 1e-8;
 
 struct Point

@@ -1,5 +1,5 @@
 #pragma once
 
-#include "input.h"
+#include "../headers/input.h"
 
 std::string derivative(func& foo);

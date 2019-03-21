@@ -52,6 +52,9 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #if (HAVE_SSTREAM == 1)
     #include <sstream>
 #endif
+#if (HAVE_CFLOAT == 1)
+    #include <cfloat>
+#endif
 
 #if (HAVE_SDL2_SDL_H == 1)
     #include <SDL2/SDL.h>
@@ -68,6 +71,11 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 #include "TeoriaVer.h"
 #include "bigint.h"
 #include "matrix.h"
+#include "derivative.h"
+#include "graph.h"
+#include "input.h"
+#include "integral.h"
+#include "root.h"
 
 /* main.cpp */
 void prt_ln(void);

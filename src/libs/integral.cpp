@@ -1,4 +1,4 @@
-#include "integral.h"
+#include "../headers/header.h"
 
 double def_int(func &foo, double a, double b)
 {
