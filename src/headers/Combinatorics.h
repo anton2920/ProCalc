@@ -30,7 +30,7 @@ void Placements_with_repetitions();
 void Placements_without_repetitions();
 void Combinations_with_repetitions();
 void Combinations_without_repetitions();
-int Permutations_with_repetitions();
+void Permutations_with_repetitions();
 void Permutations_without_repetitions();
 
 /* Combinatorics_menu.cpp */

@@ -68,7 +68,7 @@ void Placements_with_repetitions()
 
 void Placements_without_repetitions()
 {
-	int n, m, i;
+	int n, m;
 	Bigint A_m_n = 1;
 		
 	Combinatorics_read_n_m(&n, &m);
@@ -145,7 +145,7 @@ void Permutations_without_repetitions()
     prt_ln();
 }
 
-int Permutations_with_repetitions()
+void Permutations_with_repetitions()
 {
 	int j, long_n = 0, n[1000];
 	Bigint P_n, n_0 = 1;
@@ -167,7 +167,7 @@ int Permutations_with_repetitions()
             long_n += n[j];
         }
 	}
-	if (n[0] == 0) { return 1; }
+	if (n[0] == 0) { return; }
 	else
 	{
 		P_n = factorial(long_n);
@@ -182,6 +182,5 @@ int Permutations_with_repetitions()
 		prt_ln();
 		std::cout << "| The number of permutations with repetitions is " << P_n << "\n";
 		prt_ln();
-		return 0;
 	}
 }
