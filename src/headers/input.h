@@ -1,4 +1,5 @@
-#pragma once
+#ifndef INPUT_HEADER
+#define INPUT_HEADER
 
 struct func
 {
@@ -24,3 +25,5 @@ void read(func&, const int);
 void print(func&);
 std::string to_string_with_precision(const double a_value, int n = 6);
 void func_helper(func& );
+
+#endif

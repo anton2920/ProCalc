@@ -1,24 +1,26 @@
-#pragma once
+#ifndef GRAPH_HEADER
+#define GRAPH_HEADER
 
-#include "../headers/header.h"
+#include "header.h"
 
 #if (HAVE_SDL2_SDL_H == 1 || HAVE_SDL_H == 1 || HAVE_SDL_SDL_H == 1)
 
-namespace PC
-{
-	const int ratio_x = 16;
-	const int ratio_y = 9;
-    const int size = 100;
-	const int window_width = size * ratio_x;
-	const int window_height = size * ratio_y;
-}
+struct PC {
+    int ratio_x;
+    int ratio_y;
+    int size;
+    int window_width;
+    int window_height;
+};
 
-bool SDL_start(SDL_Window**, SDL_Renderer**);
+bool SDL_start(SDL_Window**, SDL_Renderer**, PC *);
 void clear_window(SDL_Renderer*);
-void plotGraph(SDL_Renderer*, func&, int x_pos = PC::window_height / 2, int y_pos = PC::window_width / 2);
-void draw_y_axis(SDL_Renderer* renderer, int y_pos = PC::window_width / 2);
-void draw_x_axis(SDL_Renderer* renderer, int x_pos = PC::window_height / 2, int y_pos = PC::window_width / 2);
-void draw_grid(SDL_Renderer*);
+void plotGraph(SDL_Renderer*, func&, int, int, PC *);
+void draw_y_axis(SDL_Renderer* renderer, int, PC *);
+void draw_x_axis(SDL_Renderer* renderer, int, PC *);
+void draw_grid(SDL_Renderer*, PC *);
+
+#endif
 
 #endif
 

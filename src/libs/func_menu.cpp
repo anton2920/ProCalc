@@ -1,3 +1,4 @@
+#include <SDL2/SDL_video.h>
 #include "../headers/header.h"
 
 int choose_function()
@@ -136,55 +137,51 @@ int func_list(func& foo)
                     SDL_Window* window = nullptr;
                     SDL_Renderer* renderer = nullptr;
 
-                    SDL_start(&window, &renderer);
+                    PC computer = {16, 9, 0, 0, 0};
 
-                    bool close_requested = false;
-                    int x_pos = PC::window_height / 2, y_pos = PC::window_width / 2;
-                    union SDL_Event event;
+                    if (SDL_start(&window, &renderer, &computer)) {
 
-                    while (!close_requested) {
-                        while (SDL_PollEvent(&event)) {
-                            if (event.type == SDL_QUIT) {
-                                close_requested = true;
-                                break;
-                            } else if (event.type == SDL_KEYDOWN) {
-                                if (event.key.keysym.sym == SDLK_LEFT)
-                                {
-                                    y_pos += PC::size / 2;
-                                }
-                                else if (event.key.keysym.sym == SDLK_RIGHT)
-                                {
-                                    y_pos -= PC::size / 2;
-                                }
-                                else if (event.key.keysym.sym == SDLK_UP)
-                                {
-                                    x_pos += PC::size / 2;
-                                }
-                                else if (event.key.keysym.sym == SDLK_DOWN)
-                                {
-                                    x_pos -= PC::size / 2;
-                                }
-                                else if (event.key.keysym.sym == SDLK_SPACE)
-                                {
-                                    x_pos = PC::window_height / 2;
-                                    y_pos = PC::window_width / 2;
+                        computer.size = computer.window_width / computer.ratio_x;
+                        bool close_requested = false;
+                        int x_pos = computer.window_height / 2, y_pos = computer.window_width / 2;
+                        SDL_Event event;
+
+
+                        while (!close_requested) {
+                            while (SDL_PollEvent(&event)) {
+                                if (event.type == SDL_QUIT) {
+                                    close_requested = true;
+                                    break;
+                                } else if (event.type == SDL_KEYDOWN) {
+                                    if (event.key.keysym.sym == SDLK_LEFT) {
+                                        y_pos += computer.size / 2;
+                                    } else if (event.key.keysym.sym == SDLK_RIGHT) {
+                                        y_pos -= computer.size / 2;
+                                    } else if (event.key.keysym.sym == SDLK_UP) {
+                                        x_pos += computer.size / 2;
+                                    } else if (event.key.keysym.sym == SDLK_DOWN) {
+                                        x_pos -= computer.size / 2;
+                                    } else if (event.key.keysym.sym == SDLK_SPACE) {
+                                        x_pos = computer.window_height / 2;
+                                        y_pos = computer.window_width / 2;
+                                    }
                                 }
                             }
+                            clear_window(renderer);
+
+                            draw_grid(renderer, &computer);
+                            draw_y_axis(renderer, y_pos, &computer);
+                            draw_x_axis(renderer, x_pos, &computer);
+                            plotGraph(renderer, foo, x_pos, y_pos, &computer);
+                            SDL_RenderPresent(renderer);
+
+                            SDL_Delay(10);
                         }
-                        clear_window(renderer);
 
-                        draw_grid(renderer);
-                        draw_y_axis(renderer, y_pos);
-                        draw_x_axis(renderer, x_pos);
-                        plotGraph(renderer, foo, x_pos, y_pos);
-                        SDL_RenderPresent(renderer);
-
-                        SDL_Delay(10);
+                        SDL_DestroyRenderer(renderer);
+                        SDL_DestroyWindow(window);
+                        SDL_Quit();
                     }
-
-                    SDL_DestroyRenderer(renderer);
-                    SDL_DestroyWindow(window);
-                    SDL_Quit();
                 }
                 #else
                     std::cout << "| menu: you don't have SDL installed                         |\n";

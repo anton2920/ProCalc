@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ROOT_HEADER
+#define ROOT_HEADER
 
 #include "input.h"
 
@@ -12,3 +13,5 @@ struct Point
 void BisectionMethod(func& foo, double x_left, double x_right);
 void extremum(func&, double, double);
 double derivative(func& foo, double x);
+
+#endif
