@@ -16,14 +16,13 @@ double def_int(func &foo, double a, double b, bool *check)
 	}
 	else if (foo.name == "log")
 	{
-		if (foo.b <= 0 && b <= 0)
-			satisfes = false;
-		else if (foo.b >= 0 && a <= 0)
+		if (foo.b <= 0 && b <= 0 || foo.b >= 0 && a <= 0)
 			satisfes = false;
 	}
 
 	if (satisfes)
 	{
+		result = 0;
 		result += eval(foo, x);
 		x += h;
 
