@@ -20,27 +20,32 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 #include "../headers/header.h"
 
 
-
  void SetMtx(double **matr, int n, int m)
 {
-    printf("Enter the matrix\n");
+    printf("| Type the matrix                                            |\n");
+    prt_ln();
     for (int i = 0; i < n; i++)
         for (int j = 0; j < m; j++)
         {
-            printf("matr[%d][%d] = ",i,j);
+            printf("| matrix[%d][%d] = ",i,j);
             scanf("%lf", &matr[i][j]);
         }
+    prt_ln();
 }
 
  void PrintMtx(double **matr, int n, int m)
 {
+    printf("| Matrix                                                     |\n");
+    prt_ln();
     for (int i = 0; i < n; i++) {
+        printf("| ");
         for (int j = 0; j < m; j++)
         {
             printf("%.2lf ", matr[i][j]);
         }
         printf("\n");
     }
+    prt_ln();
 }
 
  void FreeMem(double **matr, int n)
@@ -54,7 +59,7 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 {
     int i, j;
     double p;
-    printf("Enter the number\n");
+    printf("| Type the number: ");
     scanf("%lf", &p);
 
     for(i = 0; i < n; i++)
@@ -64,12 +69,13 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
             matr[i][j] *= p;
         }
     }
+    prt_ln();
 }
 
  void mat_plus(double **matr, int n, int m)//matrix plus(minus) number
 {
     int i, j, s;
-    printf("Enter the number\n");
+    printf("| Type the number: ");
     scanf("%d", &s);
 
     for(i = 0; i < n; i++)
@@ -79,6 +85,7 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
             matr[i][j] += s;
         }
     }
+    prt_ln();
 }
 
  void mats_plus(double **matr, double **matr2, int n, int m)//matix + matrix
@@ -108,12 +115,14 @@ along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 {
     for(int i = 0; i < m; i++)
     {
+        printf("| ");
         for(int j = 0; j < n; j++)
         {
             printf("%.2lf ", matr[j][i]);
         }
         printf("\n");
     }
+    prt_ln();
 }
 
  void mats_mult(double **matr1, double **matr2, double **matr3, int n, int m, int n1, int m1)//matrix * matrix
@@ -154,7 +163,8 @@ double Det(double **matr, int n)
     double temp = 0;
     int k = 1;
     if (n < 1) {
-        cout << "Incorrect matix size" << endl;
+        cout << "| determinant: Incorrect matrix size!                        |\n";
+        prt_ln();
         return 0;
     }
     else if (n == 1)

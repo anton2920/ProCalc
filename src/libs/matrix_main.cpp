@@ -25,23 +25,23 @@ int matrix_menu() {
     while (true) {
 
         printf(" -------------------------------------------------------------\n"
-                       "|                                                            |\n"
-                       "|                >> Matrix calculator <<                     |\n"
-                       "|                                                            |\n"
-                       "|  >> Choose a function:                                     |\n"
-                       "|                                                            |\n"
-                       "|       1) Addition (subtraction) of a matrix with a number  |\n"
-                       "|       2) Matrix multiplication by number                   |\n"
-                       "|       3) Addition of two matrices                          |\n"
-                       "|       4) Subtraction of two matrices                       |\n"
-                       "|       5) Multiplication of two matrices                    |\n"
-                       "|       6) Matrix transpose                                  |\n"
-                       "|       7) Matrix determinant                                |\n"
-                       "|       8) Inverse matrix                                    |\n"
-                       "|                                                            |\n"
-                       "|       >> Type \"back\" to go to the previous menu <<         |\n"
-                       "|       >> Type \"quit\" to terminate this program <<          |\n"
-                       "|                                                            |\n");
+"|                                                            |\n"
+"|                >> Matrix calculator <<                     |\n"
+"|                                                            |\n"
+"|  >> Choose a function:                                     |\n"
+"|                                                            |\n"
+"|       1) Addition (subtraction) of a matrix with a number  |\n"
+"|       2) Matrix multiplication by number                   |\n"
+"|       3) Addition of two matrices                          |\n"
+"|       4) Subtraction of two matrices                       |\n"
+"|       5) Multiplication of two matrices                    |\n"
+"|       6) Matrix transpose                                  |\n"
+"|       7) Matrix determinant                                |\n"
+"|       8) Inverse matrix                                    |\n"
+"|                                                            |\n"
+"|       >> Type \"back\" to go to the previous menu <<         |\n"
+"|       >> Type \"quit\" to terminate this program <<          |\n"
+"|                                                            |\n");
         printf("| Answer: ");
         func = getchar();
         prt_ln();
@@ -58,8 +58,9 @@ int matrix_menu() {
                 case 1: {
                     int n, m;
 
-                    printf("Enter the size of matrix\n");
+                    printf("| Type the size of matrix (#of_rows and #of_columns): ");
                     scanf("%d%d", &n, &m);
+                    prt_ln();
 
                     double **matr1 = new double *[n];
                     for (int i = 0; i < n; i++) {
@@ -77,8 +78,9 @@ int matrix_menu() {
                 case 2: {
                     int n, m;
 
-                    printf("Enter the size of matrix\n");
+                    printf("| Type the size of matrix (#of_rows and #of_columns): ");
                     scanf("%d%d", &n, &m);
+                    prt_ln();
 
                     double **matr1 = new double *[n];
                     for (int i = 0; i < n; i++) {
@@ -95,8 +97,9 @@ int matrix_menu() {
                 case 3: {
                     int n, m;
 
-                    printf("Enter the size of matrices\n");
+                    printf("| Type the size of matrices (#of_rows and #of_columns): ");
                     scanf("%d%d", &n, &m);
+                    prt_ln();
 
                     double **matr1 = new double *[n];
                     double **matr2 = new double *[n];
@@ -117,8 +120,9 @@ int matrix_menu() {
                 case 4: {
                     int n, m;
 
-                    printf("Enter the size of matrices\n");
+                    printf("| Type the size of matrices (#of_rows and #of_columns): ");
                     scanf("%d%d", &n, &m);
+                    prt_ln();
 
                     double **matr1 = new double *[n];
                     double **matr2 = new double *[n];
@@ -139,12 +143,18 @@ int matrix_menu() {
                 case 5: {
                     int n, m, n1, m1;
 
-                    printf("Enter the size of first matrix\n");
+                    printf("| Type the 1st matrix's size (#of_rows and #of_columns): ");
                     scanf("%d%d", &n, &m);
+                    prt_ln();
 
                     do {
-                        printf("Enter the size of second matrix(The number of columns of the first matrix must be equal to the number of rows of the second)\n");
+                        printf("| Type the 2nd matrix size (#of_rows and #of_columns): ");
                         scanf("%d%d", &n1, &m1);
+                        prt_ln();
+                        if (m != n1) {
+                            printf("| matrix: The first matrix's #of_columns must be equal to the #of_rows of the second\n");
+                            prt_ln();
+                        }
                     } while (m != n1);
 
                     double **matr1 = new double *[n];
@@ -174,8 +184,9 @@ int matrix_menu() {
                 case 6: {
                     int n, m;
 
-                    printf("Enter the size of matrix\n");
+                    printf("| Type the size of matrix (#of_rows and #of_columns): ");
                     scanf("%d%d", &n, &m);
+                    prt_ln();
 
                     double **matr1 = new double *[n];
                     for (int i = 0; i < n; i++) {
@@ -184,7 +195,9 @@ int matrix_menu() {
 
                     SetMtx(matr1, n, m);
                     PrintMtx(matr1, n, m);
-                    printf("Transpose matrix:\n");
+                    prt_ln();
+                    printf("| Transposed matrix                                          |\n");
+                    prt_ln();
                     TransponMtx(matr1, n, m);
                     FreeMem(matr1, n);
 
@@ -193,8 +206,9 @@ int matrix_menu() {
                 case 7: {
                     int n, det;
 
-                    printf("Enter the matrix size\n");
+                    printf("| Type the size of matrix (#of_rows and columns [it will be square]): ");
                     scanf("%d", &n);
+                    prt_ln();
 
                     double **matr = new double *[n];
                     for (int i = 0; i < n; i++) {
@@ -203,14 +217,17 @@ int matrix_menu() {
                     SetMtx(matr, n, n);
                     PrintMtx(matr, n, n);
                     det = Det(matr, n);
-                    printf("Determinant = %d\n", det);
+                    printf("| Determinant = %d\n", det);
+                    prt_ln();
                 }
                     break;
                 case 8: {
                     int n, det;
 
-                    printf("Enter the matrix size\n");
+                    printf("| Type the size of matrix (#of_rows and columns [it will be square]): ");
                     scanf("%d", &n);
+                    prt_ln();
+
                     double **matr = new double *[n];
                     double **obr_matr = new double *[n];
                     for (int i = 0; i < n; i++) {
@@ -220,7 +237,8 @@ int matrix_menu() {
                     SetMtx(matr, n, n);
                     PrintMtx(matr, n, n);
                     det = Det(matr, n);
-                    printf("Determinant = %d\n", det);
+                    printf("| Determinant = %d\n", det);
+                    prt_ln();
                     if (det) {
                         for (int i = 0; i < n; i++) {
                             for (int j = 0; j < n; j++) {
@@ -234,18 +252,17 @@ int matrix_menu() {
                             }
                         }
                     } else {
-                        cout << "Determinant = 0 => inverse matrix doesn't exist" << endl;
-                        system("pause");
-                        return 0;
+                        cout << "| Determinant == 0 => Inverse matrix doesn't exist           |\n" << endl;
+                        break;
                     }
 
                     //Matrix tran
-                    printf("Inverse matrix:\n");
+                    printf("| Inverse matrix                                             |\n");
+                    prt_ln();
                     TransponMtx(obr_matr, n, n);
 
                     FreeMem(matr, n);
                     FreeMem(obr_matr, n);
-                    system("pause");
                 }
                     break;
                 default:
