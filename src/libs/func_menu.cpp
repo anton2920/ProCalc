@@ -203,7 +203,7 @@ int func_list(func& foo)
                         std::cin >> x_right;
                         prt_ln();
 
-                    } while (x_left <= x_right);
+                    } while (x_left >= x_right);
                     std::cout << def_int(foo, x_left, x_right) << "\n";
                     prt_ln();
                     break;
