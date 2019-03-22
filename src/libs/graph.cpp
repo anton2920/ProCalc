@@ -6,7 +6,7 @@ bool SDL_start(SDL_Window** window, SDL_Renderer** renderer)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
-		std::cout << "Initialization failed!\n";
+		std::cout << "| SDL: Initialization failed! Error: " << SDL_GetError() << "\n";
 		return false;
 	}
 
@@ -15,7 +15,7 @@ bool SDL_start(SDL_Window** window, SDL_Renderer** renderer)
 		PC::window_width, PC::window_height, SDL_WINDOW_SHOWN);
 	if (*window == nullptr)
 	{
-		std::cout << "Failed to create a window!\n";
+		std::cout << "| SDL: Failed to create a window! Error: " << SDL_GetError() << "\n";
 		SDL_Quit();
 		return false;
 	}
@@ -23,7 +23,7 @@ bool SDL_start(SDL_Window** window, SDL_Renderer** renderer)
 	*renderer = SDL_CreateRenderer(*window, -1, SDL_RENDERER_ACCELERATED);
 	if (*renderer == nullptr)
 	{
-		std::cout << "Failed to create a renderer!\n";
+		std::cout << "| SDL: Failed to create a renderer! Error: " << SDL_GetError() << "\n";
 		SDL_DestroyWindow(*window);
 		SDL_Quit();
 		return false;
