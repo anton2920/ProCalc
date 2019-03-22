@@ -1,5 +1,7 @@
 #include "../headers/header.h"
 
+#if (HAVE_SDL2_SDL_H == 1 || HAVE_SDL_H == 1 || HAVE_SDL_SDL_H == 1)
+
 bool SDL_start(SDL_Window** window, SDL_Renderer** renderer)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -107,3 +109,5 @@ void draw_grid(SDL_Renderer* renderer)
 		SDL_RenderDrawLine(renderer, 0, i, window_width, i);
 	}
 }
+
+#endif

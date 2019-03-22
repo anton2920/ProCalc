@@ -45,7 +45,7 @@ double def_int(func &foo, double a, double b)
 	}
 	else
 	{
-		std::cout << "Invalid segment!\n";
+		std::cout << "| integral: Invalid segment!\n";
 	}
 
 	return result;

@@ -109,7 +109,7 @@ int func_list(func& foo)
 "|                                                            |\n"
 "|  >> Choose a function:                                     |\n"
 "|                                                            |\n"
-"|       1) Plot a graph                                      |\n"
+"|       1) Plot a graph (SDL required)                       |\n"
 "|       2) Approximately calculate the definite integral     |\n"
 "|       3) Find root (Y = 0)                                 |\n"
 "|       4) Find extreme points                               |\n"
@@ -119,17 +119,19 @@ int func_list(func& foo)
 "|                                                            |\n");
 		printf("| Answer: ");
 		func = getchar();
+        prt_ln();
 		if (isdigit(func) && func >= '1' && func <= '6') {
 			func -= '0';
 			if ((junk = getchar()) != '\n') {
-				while ((junk = getchar()) != '\n');
+				while ((junk = getchar()) != '\n')
+                    ;
 				no_cmd();
 				continue;
 			}
 
 			switch (func) {
-			case 1:
-            #if (HAVE_SDL2_SDL_H == 1 || HAVE_SDL_H == 1 || HAVE_SDL_SDL_H == 1)
+                case 1:
+                #if (HAVE_SDL2_SDL_H == 1 || HAVE_SDL_H == 1 || HAVE_SDL_SDL_H == 1)
                 {
                     SDL_Window* window = nullptr;
                     SDL_Renderer* renderer = nullptr;
@@ -140,10 +142,8 @@ int func_list(func& foo)
                     int x_pos = PC::window_height / 2, y_pos = PC::window_width / 2;
                     union SDL_Event event;
 
-                    while (!close_requested)
-                    {
-                        while (SDL_PollEvent(&event))
-                        {
+                    while (!close_requested) {
+                        while (SDL_PollEvent(&event)) {
                             if (event.type == SDL_QUIT) {
                                 close_requested = true;
                                 break;
@@ -181,57 +181,66 @@ int func_list(func& foo)
 
                         SDL_Delay(10);
                     }
+
+                    SDL_DestroyRenderer(renderer);
+                    SDL_DestroyWindow(window);
+                    SDL_Quit();
                 }
-            #else
-                std::cout << "| menu: you don't have SDL installed                         |\n"
-                prt_ln();
-            #endif
-			    break;
-			case 2:
-			{
-				double x_left, x_right;
-				do
-				{
-					std::cout << "Enter left bound: ";
-					std::cin >> x_left;
-					std::cout << "Enter right bound: ";
-					std::cin >> x_right;
+                #else
+                    std::cout << "| menu: you don't have SDL installed                         |\n";
+                    continue;
+                #endif
+                    ungetc('\n', stdin);
+                    break;
+                case 2:
+                {
+                    double x_left, x_right;
+                    do
+                    {
+                        std::cout << "| Type the left bound: ";
+                        std::cin >> x_left;
+                        std::cout << "| Type the right bound: ";
+                        std::cin >> x_right;
+                        prt_ln();
 
-				} while (x_left <= x_right);
-				std::cout << def_int(foo, x_left, x_right);
-				break;
-            }
-			case 3:
-			{
-				double x_left, x_right;
-				do
-				{
-					std::cout << "Enter left bound: ";
-					std::cin >> x_left;
-					std::cout << "Enter right bound: ";
-					std::cin >> x_right;
+                    } while (x_left <= x_right);
+                    std::cout << def_int(foo, x_left, x_right) << "\n";
+                    prt_ln();
+                    break;
+                }
+                case 3:
+                {
+                    double x_left, x_right;
+                    do
+                    {
+                        std::cout << "| Type the left bound: ";
+                        std::cin >> x_left;
+                        std::cout << "| Type the right bound: ";
+                        std::cin >> x_right;
+                        prt_ln();
 
-				} while (x_left <= x_right);
+                    } while (x_left <= x_right);
 
-				BisectionMethod(foo, x_left, x_right);
-				break;
-            }
-			case 4:
-			{
-				double x_left, x_right;
-				do
-				{
-					std::cout << "Enter left bound: ";
-					std::cin >> x_left;
-					std::cout << "Enter right bound: ";
-					std::cin >> x_right;
+                    BisectionMethod(foo, x_left, x_right);
+                    break;
+                }
+                case 4:
+                {
+                    double x_left, x_right;
+                    do
+                    {
+                        std::cout << "| Type the left bound: ";
+                        std::cin >> x_left;
+                        std::cout << "| Type the right bound: ";
+                        std::cin >> x_right;
+                        prt_ln();
 
-				} while (x_left <= x_right);
-				extremum(foo, x_left, x_right);
-				break;
-			}
-            default:
-                break;
+                    } while (x_left <= x_right);
+                    extremum(foo, x_left, x_right);
+                    break;
+                }
+                default:
+                    break;
 			}
 
             while ((junk = getchar()) != '\n')
