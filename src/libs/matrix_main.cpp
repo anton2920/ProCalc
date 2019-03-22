@@ -58,8 +58,10 @@ int matrix_menu() {
                 case 1: {
                     int n, m;
 
-                    printf("| Type the size of matrix (#of_rows and #of_columns): ");
-                    scanf("%d%d", &n, &m);
+                    do{
+                        printf("| Type the size of matrix (#of_rows and #of_columns): ");
+                        scanf("%d%d", &n, &m);
+                    }while(m < 1 || n < 1);
                     prt_ln();
 
                     double **matr1 = new double *[n];
@@ -78,8 +80,10 @@ int matrix_menu() {
                 case 2: {
                     int n, m;
 
-                    printf("| Type the size of matrix (#of_rows and #of_columns): ");
-                    scanf("%d%d", &n, &m);
+                    do{
+                        printf("| Type the size of matrix (#of_rows and #of_columns): ");
+                        scanf("%d%d", &n, &m);
+                    }while(m < 1 || n < 1);
                     prt_ln();
 
                     double **matr1 = new double *[n];
@@ -97,8 +101,10 @@ int matrix_menu() {
                 case 3: {
                     int n, m;
 
-                    printf("| Type the size of matrices (#of_rows and #of_columns): ");
-                    scanf("%d%d", &n, &m);
+                    do{
+                        printf("| Type the size of matrix (#of_rows and #of_columns): ");
+                        scanf("%d%d", &n, &m);
+                    }while(m < 1 || n < 1);
                     prt_ln();
 
                     double **matr1 = new double *[n];
@@ -120,8 +126,10 @@ int matrix_menu() {
                 case 4: {
                     int n, m;
 
-                    printf("| Type the size of matrices (#of_rows and #of_columns): ");
-                    scanf("%d%d", &n, &m);
+                    do{
+                        printf("| Type the size of matrix (#of_rows and #of_columns): ");
+                        scanf("%d%d", &n, &m);
+                    }while(m < 1 || n < 1);
                     prt_ln();
 
                     double **matr1 = new double *[n];
@@ -143,8 +151,12 @@ int matrix_menu() {
                 case 5: {
                     int n, m, n1, m1;
 
-                    printf("| Type the 1st matrix's size (#of_rows and #of_columns): ");
-                    scanf("%d%d", &n, &m);
+                    do
+                    {
+
+                        printf("| Type the 1st matrix's size (#of_rows and #of_columns): ");
+                        scanf("%d%d", &n, &m);
+                    }while(n < 1 || m < 1);
                     prt_ln();
 
                     do {
@@ -155,7 +167,7 @@ int matrix_menu() {
                             printf("| matrix: The first matrix's #of_columns must be equal to the #of_rows of the second\n");
                             prt_ln();
                         }
-                    } while (m != n1);
+                    } while (m != n1 || n1 < 1 || m1 < 1);
 
                     double **matr1 = new double *[n];
                     double **matr2 = new double *[n1];
@@ -184,8 +196,10 @@ int matrix_menu() {
                 case 6: {
                     int n, m;
 
-                    printf("| Type the size of matrix (#of_rows and #of_columns): ");
-                    scanf("%d%d", &n, &m);
+                    do{
+                        printf("| Type the size of matrix (#of_rows and #of_columns): ");
+                        scanf("%d%d", &n, &m);
+                    }while(m < 1 || n < 1);
                     prt_ln();
 
                     double **matr1 = new double *[n];
@@ -206,8 +220,10 @@ int matrix_menu() {
                 case 7: {
                     int n, det;
 
-                    printf("| Type the size of matrix (#of_rows and columns [it will be square]): ");
-                    scanf("%d", &n);
+                    do{
+                        printf("| Type the size of matrix (#of_rows and columns [it will be square]): ");
+                        scanf("%d", &n);
+                    }while(n < 1);
                     prt_ln();
 
                     double **matr = new double *[n];
@@ -224,8 +240,10 @@ int matrix_menu() {
                 case 8: {
                     int n, det;
 
-                    printf("| Type the size of matrix (#of_rows and columns [it will be square]): ");
-                    scanf("%d", &n);
+                    do{
+                        printf("| Type the size of matrix (#of_rows and columns [it will be square]): ");
+                        scanf("%d", &n);
+                    }while(n < 1);
                     prt_ln();
 
                     double **matr = new double *[n];
