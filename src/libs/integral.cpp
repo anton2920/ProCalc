@@ -1,6 +1,6 @@
 #include "../headers/header.h"
 
-double def_int(func &foo, double a, double b)
+double def_int(func &foo, double a, double b, bool *check)
 {
 	double result = DBL_MAX;
 	int n = ceil(b - a);
@@ -46,6 +46,7 @@ double def_int(func &foo, double a, double b)
 	else
 	{
 		std::cout << "| integral: Invalid segment!                                 |\n";
+        *check = false;
 	}
 
 	return result;

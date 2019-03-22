@@ -4,7 +4,7 @@ void BisectionMethod(func& foo, double x_left, double x_right)
 {
 	if (eval(foo, x_left) * eval(foo, x_right) >= 0)
 	{
-		std::cout << "Wrong interval!\n";
+		std::cout << "| root: Wrong interval!\n";
 		return;
 	}
 
@@ -23,12 +23,12 @@ void BisectionMethod(func& foo, double x_left, double x_right)
 			x_left = mid_point;
 	}
 
-	std::cout << "The value of root is : " << mid_point << '\n';
+	std::cout << "| The value of root is : " << mid_point << '\n';
 }
 
 void extremum(func& foo, double a, double b)
 {
-	std::cout << "Extreme points:\n";
+	std::cout << "| Extreme points                                             |\n";
 
 	double step = 1e-9;
 	for (double cur_x = a + step; cur_x < b; cur_x += step)

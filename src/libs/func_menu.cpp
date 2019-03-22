@@ -59,6 +59,10 @@ int choose_function()
 				break;
 			}
 
+            prt_ln();
+            print(foo);
+            prt_ln();
+
             while ((junk = getchar()) != '\n')
                 ;
 
@@ -191,10 +195,14 @@ int func_list(func& foo)
                     break;
                 case 2:
                 {
-                    double x_left, x_right;
+                    double x_left, x_right, ans;
                     menu_bounds(&x_left, &x_right);
+                    bool check = true;
 
-                    std::cout << def_int(foo, x_left, x_right) << "\n";
+                    ans = def_int(foo, x_left, x_right, &check);
+                    if (check) {
+                        std::cout << "| Answer: " << ans << "\n";
+                    }
                     prt_ln();
                     break;
                 }
@@ -204,6 +212,7 @@ int func_list(func& foo)
                     menu_bounds(&x_left, &x_right);
 
                     BisectionMethod(foo, x_left, x_right);
+                    prt_ln();
                     break;
                 }
                 case 4:
