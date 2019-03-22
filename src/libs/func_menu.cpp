@@ -192,15 +192,8 @@ int func_list(func& foo)
                 case 2:
                 {
                     double x_left, x_right;
-                    do
-                    {
-                        std::cout << "| Type the left bound: ";
-                        std::cin >> x_left;
-                        std::cout << "| Type the right bound: ";
-                        std::cin >> x_right;
-                        prt_ln();
+                    menu_bounds(&x_left, &x_right);
 
-                    } while (x_left >= x_right);
                     std::cout << def_int(foo, x_left, x_right) << "\n";
                     prt_ln();
                     break;
@@ -208,15 +201,7 @@ int func_list(func& foo)
                 case 3:
                 {
                     double x_left, x_right;
-                    do
-                    {
-                        std::cout << "| Type the left bound: ";
-                        std::cin >> x_left;
-                        std::cout << "| Type the right bound: ";
-                        std::cin >> x_right;
-                        prt_ln();
-
-                    } while (x_left >= x_right);
+                    menu_bounds(&x_left, &x_right);
 
                     BisectionMethod(foo, x_left, x_right);
                     break;
@@ -224,15 +209,8 @@ int func_list(func& foo)
                 case 4:
                 {
                     double x_left, x_right;
-                    do
-                    {
-                        std::cout << "| Type the left bound: ";
-                        std::cin >> x_left;
-                        std::cout << "| Type the right bound: ";
-                        std::cin >> x_right;
-                        prt_ln();
+                    menu_bounds(&x_left, &x_right);
 
-                    } while (x_left >= x_right);
                     extremum(foo, x_left, x_right);
                     break;
                 }
@@ -268,4 +246,16 @@ int func_list(func& foo)
 			continue;
 		}
 	}
+}
+
+void menu_bounds(double *l, double *r) {
+
+    /* I/O flow */
+    do {
+        std::cout << "| Type the left bound: ";
+        std::cin >> *l;
+        std::cout << "| Type the right bound: ";
+        std::cin >> *r;
+        prt_ln();
+    } while (l >= r);
 }
