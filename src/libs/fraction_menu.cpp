@@ -39,7 +39,7 @@ int fraction_menu(void) {
 "|       4) Division                                          |\n"
 "|       5) Comparison                                        |\n"
 "|       6) Reduction                                         |\n"
-"|       7) decimal fraction                                  |\n"
+"|       7) Decimal fraction                                  |\n"
 "|                                                            |\n"
 "|       >> Type \"back\" to go to the previous menu <<         |\n"
 "|       >> Type \"quit\" to terminate this program <<          |\n"
