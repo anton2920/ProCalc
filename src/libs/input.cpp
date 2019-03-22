@@ -54,11 +54,11 @@ void read(func &foo, const int mode)
 		func_helper(foo);
 		std::cout << "| Type a: ";
 		std::cin >> foo.a;
-        std::cout << "| Type b: ";
+		std::cout << "| Type b: ";
 		std::cin >> foo.b;
-        std::cout << "| Type c: ";
+		std::cout << "| Type c: ";
 		std::cin >> foo.c;
-        std::cout << "| Type d: ";
+		std::cout << "| Type d: ";
 		std::cin >> foo.d;
 		break;
 	}
@@ -82,8 +82,11 @@ void read(func &foo, const int mode)
 		func_helper(foo);
 		std::cout << "| Type a: ";
 		std::cin >> foo.a;
-		std::cout << "| Type b: ";
-		std::cin >> foo.b;
+		do
+		{
+			std::cout << "| Type b: ";
+			std::cin >> foo.b;
+		} while (foo.b <= 0);
 		std::cout << "| Type c: ";
 		std::cin >> foo.c;
 		std::cout << "| Type d: ";
@@ -122,7 +125,7 @@ void read(func &foo, const int mode)
 		{
 			std::cout << "| Type degree: ";
 			std::cin >> foo.degree;
-            prt_ln();
+			prt_ln();
 		} while (foo.degree < 0);
 
 		foo.coeff = new double[foo.degree + 1];
@@ -132,7 +135,7 @@ void read(func &foo, const int mode)
 			std::cout << "| Type a" << i << ": ";
 			std::cin >> foo.coeff[i];
 		}
-        prt_ln();
+		prt_ln();
 
 		break;
 	}
@@ -206,7 +209,7 @@ void func_helper(func& foo)
 {
 	std::cout << "| Type a function                                            |\n";
 	prt_ln();
-    std::cout << "| Example: ";
+	std::cout << "| Example: ";
 
 	if (foo.name == "sin")
 	{
@@ -233,5 +236,5 @@ void func_helper(func& foo)
 		std::cout << "a0 + a1 * x + a2 * x ^ 2 + ... + aN * x ^ N" << '\n';
 	}
 
-    prt_ln();
+	prt_ln();
 }

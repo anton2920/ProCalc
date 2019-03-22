@@ -265,5 +265,5 @@ void menu_bounds(double *l, double *r) {
         std::cout << "| Type the right bound: ";
         std::cin >> *r;
         prt_ln();
-    } while (l >= r);
+    } while (*l >= *r);
 }
