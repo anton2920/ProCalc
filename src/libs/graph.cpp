@@ -1,4 +1,3 @@
-#include <SDL2/SDL_video.h>
 #include "../headers/graph.h"
 
 #if (HAVE_SDL2_SDL_H == 1 || HAVE_SDL_H == 1 || HAVE_SDL_SDL_H == 1)

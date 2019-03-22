@@ -58,6 +58,11 @@ void read(Number *numb){
 		prt_ln();
 		printf("| Answer: ");
 		std::cin>>numb->base>>numb->chis>>numb->znam;
+		if (!numb->znam) {
+            prt_ln();
+            std::cout<<"| fractions: zero division error!                            |\n"; //you can div by 0
+            prt_ln();
+        }
 	}while(numb->znam==0);
 	if (numb->base<0 || numb->chis<0 || numb->znam < 0) {
 		numb->znak = true;
@@ -132,7 +137,7 @@ void del(Number *numb1,Number *numb2,Number *numb3){
 }
 
 void ymn(Number *numb1,Number *numb2,Number *numb3){
-	numb3->znak = !(numb1->znak==numb2->znak);
+	numb3->znak = (numb1->znak != numb2->znak);
 	per(numb1,numb2);
 	numb3->chis=numb1->chis*numb2->chis;
 	numb3->znam=numb1->znam*numb2->znam;

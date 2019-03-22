@@ -1,4 +1,3 @@
-#include <SDL2/SDL_video.h>
 #include "../headers/header.h"
 
 int choose_function()

@@ -54,70 +54,83 @@ int fraction_menu(void) {
                 no_cmd();
                 continue;
             }
-			if (func < 8) {
-				struct Number fr1, fr2, fr3;
-				read(&fr1);
-				if (func < 6) {
-					read(&fr2);
-				}
-				switch (func) {
-				case 1:
-					if (fr1.znak == fr2.znak) {
-						fr3.znak = fr1.znak;
-						add(&fr1, &fr2, &fr3);
-					}
-					else {
-						fr3.znak = true;
-						if (fr1.znak) {
-							vich(&fr2, &fr1, &fr3);
-						}
-						else {
-							vich(&fr1, &fr2, &fr3);
-						}
-						}
-					break;
-				case 2:
-					if (fr1.znak == fr2.znak) {
-						if (!fr1.znak) { vich(&fr1, &fr2, &fr3); }
-						else { vich(&fr2, &fr1, &fr3); }
-					}
-					else {
-						if (fr2.znak) {
-							add(&fr1, &fr2, &fr3);
-						}
-						else {
-							fr3.znak = true;
-							add(&fr1, &fr2, &fr3);
-						}
-					}
-					break;
-				case 3:
-					ymn(&fr1, &fr2, &fr3);
-					break;
-				case 4:
-					del(&fr1, &fr2, &fr3);
-					break;
-				case 5:
-					sravn(fr1, fr2);
-					break;
-				case 6:
-					fr1.base += videl(fr1.chis, fr1.znam);
-					write(fr1);
-					break;
-				case 7:
-					fr3 = fr1;
-					base10(fr3);
-					break;
-				default:
-					break;
-				}
-			}
-            prt_ln();
 
-            while ((junk = getchar()) != '\n')
-                ;
+            struct Number fr1 = {}, fr2 = {}, fr3 = {};
+            read(&fr1);
+            if (func < 6) {
+                read(&fr2);
+            }
+            switch (func) {
+                case 1:
+                    printf("| Answer: ");
+                    if (fr1.znak == fr2.znak) {
+                        fr3.znak = fr1.znak;
 
-            return 1;
+                        add(&fr1, &fr2, &fr3);
+                    }
+                    else {
+                        fr3.znak = true;
+                        if (fr1.znak) {
+                            vich(&fr2, &fr1, &fr3);
+                        }
+                        else {
+                            vich(&fr1, &fr2, &fr3);
+                        }
+                    }
+                    printf("\n");
+                    break;
+                case 2:
+                    printf("| Answer: ");
+                    if (fr1.znak == fr2.znak) {
+                        if (!fr1.znak) { vich(&fr1, &fr2, &fr3); }
+                        else { vich(&fr2, &fr1, &fr3); }
+                    }
+                    else {
+                        if (fr2.znak) {
+                            add(&fr1, &fr2, &fr3);
+                        }
+                        else {
+                            fr3.znak = true;
+                            add(&fr1, &fr2, &fr3);
+                        }
+                    }
+                    printf("\n");
+                    break;
+                case 3:
+                    printf("| Answer: ");
+                    ymn(&fr1, &fr2, &fr3);
+                    printf("\n");
+                    break;
+                case 4:
+                    printf("| Answer: ");
+                    del(&fr1, &fr2, &fr3);
+                    printf("\n");
+                    break;
+                case 5:
+                    sravn(fr1, fr2);
+                    break;
+                case 6:
+                    printf("| Answer: ");
+                    fr1.base += videl(fr1.chis, fr1.znam);
+                    write(fr1);
+                    printf("\n");
+                    break;
+                case 7:
+                    printf("| Answer: ");
+                    fr3 = fr1;
+                    base10(fr3);
+                    printf("\n");
+                    break;
+                default:
+                    break;
+            }
+
+        prt_ln();
+
+        while ((junk = getchar()) != '\n')
+            ;
+
+        return 1;
 
         } else if (func == 'q') {
             if (quit_m()) {
