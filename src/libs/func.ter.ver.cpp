@@ -64,7 +64,7 @@ int key(diskraspr *row, int nrow)
             sump += row[i].p;
             prt_ln();
         }
-		if (abs(1 - sump) > 1e-10 {
+		if (abs(1 - sump) > 1e-10) {
             prt_ln();
             printf("| Sum of P must be equals to one                             |\n");
             prt_ln();
