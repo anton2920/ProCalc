@@ -33,7 +33,7 @@ void probability(void)
 		do {
             printf("| Enter number of the outcomes, which interests you: ");
             scanf("%d", &deftry);
-        } while (deftry < 1);
+        } while (deftry < 0);
 		if (alltry < deftry)
 			printf("| Number of all outcomes has to be less than outcomes, which interests you \n");
 	} while (alltry < deftry);
@@ -41,7 +41,7 @@ void probability(void)
 	ver = (deftry * 1.0 / alltry) * 100;
 
     prt_ln();
-	printf("| Probability of an outcome equals %.2lf%%\n", ver);
+	printf("| Probability of an outcome equals to %3.2lf%%%s                |\n", ver, (floor(ver) == 100.0) ? "" : " ");
     prt_ln();
 }
 
@@ -64,8 +64,11 @@ int key(diskraspr *row, int nrow)
 			do {
 				printf("| p[%d] = ", i + 1);
 				scanf("%lf", &row[i].p);
-				if (row[i].p > 1)
-					printf("| ter.ver: p[%d] cannot be more than one!                    |\n", i);
+				if (row[i].p > 1) {
+                    prt_ln();
+                    printf("| ter.ver: p[%d] cannot be more than one!\n", i + 1);
+                    prt_ln();
+                }
 			} while (row[i].p > 1);
             sump += row[i].p;
             prt_ln();
@@ -90,7 +93,6 @@ void MathWait(diskraspr *row, int nrow)
 		
 	}
 
-    prt_ln();
 	printf("| Mathematical expectation equals to %2.2lf\n", sum);
     prt_ln();
 }
@@ -111,7 +113,6 @@ void Dispercia(diskraspr *row, int nrow)
 	}
 	sumd = sum2 - sum1 * sum1;
 
-    prt_ln();
 	printf("| Dispersion equals to %2.2lf\n", sumd);
     prt_ln();
 }
