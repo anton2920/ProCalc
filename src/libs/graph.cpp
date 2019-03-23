@@ -26,7 +26,9 @@ bool SDL_start(SDL_Window** window, SDL_Renderer** renderer, PC *computer)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
+		prt_ln();
 		std::cout << "| SDL: Initialization failed! Error: " << SDL_GetError() << "\n";
+		prt_ln();
 		return false;
 	}
 
