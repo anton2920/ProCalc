@@ -58,16 +58,17 @@ void extremum(func& foo, double a, double b)
 	{
 		std::cout << "| Extreme points (this may take a while)                     |\n";
 		prt_ln();
-		double step = 1e-3;
+		double step = 1e-9;
 		for (double cur_x = a + step; cur_x < b; cur_x += step)
 		{
 			if (abs(derivative(foo, cur_x)) <= 1e-6 &&
 				derivative(foo, cur_x - step) * derivative(foo, cur_x + step) < 0)
 			{
-				std::cout << "x = " << cur_x << "	y = " << derivative(foo, cur_x) << '\n';
+				std::cout << "| x = " << cur_x << "; y(x) = " << eval(foo, cur_x) << '\n';
 				cur_x += 1e-6;
 			}
 		}
+        prt_ln();
 	}
 }
 
