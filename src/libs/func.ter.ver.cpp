@@ -1,4 +1,4 @@
-﻿ц/*
+﻿/*
 ProCalc — powerful multifunctional calculator
 Copyright © 2019 Tushino Software LLC
 
@@ -61,13 +61,12 @@ int key(diskraspr *row, int nrow)
 		{
             printf("| x[%d] = ", i + 1);
             scanf("%d", &row[i].x);
-			do
-			{
+			do {
 				printf("| p[%d] = ", i + 1);
 				scanf("%lf", &row[i].p);
 				if (row[i].p > 1)
-					printf("| Рcannot be more than one\n");
-			}while(row[i].p>1)
+					printf("| ter.ver: p[%d] cannot be more than one!                    |\n", i);
+			} while (row[i].p > 1);
             sump += row[i].p;
             prt_ln();
         }
