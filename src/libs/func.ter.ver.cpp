@@ -69,13 +69,19 @@ int key(diskraspr *row, int nrow)
                     printf("| ter.ver: p[%d] cannot be more than one!\n", i + 1);
                     prt_ln();
                 }
-			} while (row[i].p > 1);
+
+                if (row[i].p < 0) {
+                    prt_ln();
+                    printf("| ter.ver: p[%d] cannot be less than zero!\n", i + 1);
+                    prt_ln();
+                }
+			} while (row[i].p < 0 || row[i].p > 1);
             sump += row[i].p;
             prt_ln();
         }
 		if (abs(1 - sump) > 1e-10) {
             prt_ln();
-            printf("| Sum of P must be equals to one                             |\n");
+            printf("| Sum of P must be equal to one                              |\n");
             prt_ln();
         }
     } while (abs(1 - sump) > 1e-10);
