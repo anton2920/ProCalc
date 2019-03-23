@@ -23,7 +23,6 @@ along with ProCalc. If not, see <https://www.gnu.org/licenses/>.
 using namespace std;
 
 void mult_p(const double * P, int P_deg, const double * Q, int Q_deg, double * R );
-void mult_this(double * P, int P_deg, const double * Q, int Q_deg);
 void mult_number(double * P, int P_deg, double * R, double n);
 void derivative_p(double * P, int P_deg, double * R, int R_deg);
 void add_p(const double * P, int P_deg, const double * Q, int Q_deg, double * R );
