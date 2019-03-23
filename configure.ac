@@ -77,3 +77,10 @@ AC_TYPE_UINT8_T
 
 # Do final output.
 AC_OUTPUT
+
+echo 
+echo "| Options used to compile and link:"
+echo "| CXX           = $CXX"
+echo "| CXXFLAGS      = $CXXFLAGS"
+echo "| LDFLAGS       = $LDFLAGS"
+echo "| ARFLAGS       = $ARFLAGS"
