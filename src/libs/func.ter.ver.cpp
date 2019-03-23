@@ -47,12 +47,13 @@ void probability(void)
 
 int key(diskraspr *row, int nrow)
 {
-    int sump = 0;
+    double sump = 0;
 	do {
         printf("| Enter number of elements of a row: ");
         scanf("%d", &nrow);
     } while (nrow < 2 || nrow > 100);
     do {
+		sump = 0;
         printf("| Set a row of X and probability P:                          |\n");
         for (int i = 0; i < nrow; i++) 
 		{
@@ -63,12 +64,12 @@ int key(diskraspr *row, int nrow)
             sump += row[i].p;
             prt_ln();
         }
-		if (abs(1 - sump) > 1e-10) {
+		if (abs(1 - sump) > (1e-17)*nrow) {
             prt_ln();
             printf("| Sum of P must be equals to one                             |\n");
             prt_ln();
         }
-    } while (abs(1 - sump) > 1e-10);
+    } while (abs(1 - sump) > (1e-17)*nrow);
 
 	return nrow;
 }
