@@ -35,7 +35,7 @@ void probability(void)
 			scanf("%d", &deftry);
 		while (deftry < 1);
 		if (alltry < deftry)
-			printf("| Number of all outcomes has to be less than outcomes,which interests you \n");
+			printf("| Number of all outcomes has to be less than outcomes, which interests you \n");
 	} while (alltry < deftry);
 
 	ver = (deftry * 1.0 / alltry) * 100;
