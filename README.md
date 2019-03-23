@@ -29,7 +29,7 @@ sudo make install
 After that, run `ldconfig(8)`.  Do `sudo ldconfig`, there's no harm in it.
 
 ### Installation notes
-You can build ProCalc without SDL (SDL2), but it will have limited functionality. If you are sure, that you have `libSDL2.so` installed on your system, you can specify its path via `LDFLAGS`. For that, instead of `./configure` run `./configure LDFLAGS = -L/path/to/SDL2/lib`. To specify `SDL2.h` use `./configure CPPFLAGS='-I /path/to/SDL2/header'`
+You can build ProCalc without SDL (SDL2), but it will have limited functionality. If you are sure, that you have `libSDL2.so` installed on your system, you can specify its path via `LDFLAGS`. For that, instead of `./configure` run `./configure LDFLAGS=-L/path/to/SDL2/lib`. To specify `SDL2.h` use `./configure CPPFLAGS=-I /path/to/SDL2/header`
 
 ## Licence
 It distributes only under GPLv2 licence. Go to https://www.gnu.org/licenses/ for more information
