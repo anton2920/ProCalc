@@ -1,6 +1,6 @@
 /*
-ProCalc — powerful multifunctional calculator
-Copyright © 2019 Tushino Software LLC
+ProCalc â€” powerful multifunctional calculator
+Copyright Â© 2019 Tushino Software LLC
 
 This file is part of ProCalc.
 

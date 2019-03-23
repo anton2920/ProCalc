@@ -1,6 +1,6 @@
 /*
-ProCalc — powerful multifunctional calculator
-Copyright © 2019 Tushino Software LLC
+ProCalc â€” powerful multifunctional calculator
+Copyright Â© 2019 Tushino Software LLC
 
 This file is part of ProCalc.
 
@@ -24,7 +24,7 @@ void BisectionMethod(func& foo, double x_left, double x_right)
 {
 	if (eval(foo, x_left) * eval(foo, x_right) >= 0)
 	{
-		std::cout << "| Root: Wrong interval!\n";
+		std::cout << "| root: Wrong interval! (function must change its sign)      |\n";
 		return;
 	}
 
@@ -43,7 +43,7 @@ void BisectionMethod(func& foo, double x_left, double x_right)
 			x_left = mid_point;
 	}
 
-	std::cout << "| The value of root is : " << mid_point << '\n';
+	std::cout << "| The value of root is: " << mid_point << '\n';
 }
 
 void extremum(func& foo, double a, double b)
@@ -51,13 +51,14 @@ void extremum(func& foo, double a, double b)
 	if (foo.name == "pow")
 	{
 		if (a <= 0)
-			std::cout << "| Extreme: Wrong interval!\n";
+			std::cout << "| extreme: Wrong interval! (left bound must be positive)     |\n";
+		    prt_ln();
 	}
 	else
 	{
-		std::cout << "| Extreme points                                             |\n";
-
-		double step = 1e-9;
+		std::cout << "| Extreme points (this may take a while)                     |\n";
+		prt_ln();
+		double step = 1e-3;
 		for (double cur_x = a + step; cur_x < b; cur_x += step)
 		{
 			if (abs(derivative(foo, cur_x)) <= 1e-6 &&
