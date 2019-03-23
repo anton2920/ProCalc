@@ -17,8 +17,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with SetsCalc. If not, see <https://www.gnu.org/licenses/>.
 */
-#include "../headers/header.h"
 
+#include "../headers/header.h"
 
  void SetMtx(double **matr, int n, int m)
 {
