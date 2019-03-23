@@ -24,16 +24,16 @@ void probability(void)
 {
 	int alltry, deftry;
 	double ver;
-	do
-	{
-		printf("| Enter the number of outcomes: ");
-		do
-			scanf("%d", &alltry);
-		while (alltry < 1);
-		printf("| Enter number of the outcomes, which interests you: ");
-		do
-			scanf("%d", &deftry);
-		while (deftry < 1);
+	do {
+        do {
+            printf("| Enter the number of outcomes: ");
+            scanf("%d", &alltry);
+        } while (alltry < 1);
+
+		do {
+            printf("| Enter number of the outcomes, which interests you: ");
+            scanf("%d", &deftry);
+        } while (deftry < 1);
 		if (alltry < deftry)
 			printf("| Number of all outcomes has to be less than outcomes, which interests you \n");
 	} while (alltry < deftry);
@@ -52,9 +52,11 @@ int key(diskraspr *row, int nrow)
         printf("| Enter number of elements of a row: ");
         scanf("%d", &nrow);
     } while (nrow < 2 || nrow > 100);
+    prt_ln();
     do {
 		sump = 0;
-        printf("| Set a row of X and probability P:                          |\n");
+        printf("| Set a row of X and probability P                           |\n");
+        prt_ln();
         for (int i = 0; i < nrow; i++) 
 		{
             printf("| x[%d] = ", i + 1);
