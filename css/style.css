@@ -10,6 +10,7 @@
 }
 .jumbotron {
     margin-top: 50px;  
+    margin-bottom: -30px;
     background-color: transparent;
 }
 h1.h {
@@ -25,4 +26,7 @@ p {
 }
 .download-btns .btn {
     margin: 0 5px 20px;
+}
+.carousel {
+    margin-top: 40px;
 }
